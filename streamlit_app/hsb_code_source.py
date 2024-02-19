@@ -13,11 +13,11 @@ import time
 warnings.filterwarnings('ignore')
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-from cvd_func import mean_sd_range, pval_shapiro, chi2_cardio, pval_txt, mwu_cardio, chi2_var, mean_sd_1, mean_sd_0, mean_sd, pp_1, pp_0, pp, pp_3_cardio, pp_3, pp_4_cardio, pp_4
+from hsb_functions import mean_sd_range, pval_shapiro, chi2_cardio, pval_txt, mwu_cardio, chi2_var, mean_sd_1, mean_sd_0, mean_sd, pp_1, pp_0, pp, pp_3_cardio, pp_3, pp_4_cardio, pp_4
 
 ## CSS ###
 
-with open("CSS_cvd.css") as f:
+with open("hsb_css.css") as f:
     st.markdown(f'<style>{f.read()}</syle>', unsafe_allow_html= True)
 
 ## Utilitaries for data viz
