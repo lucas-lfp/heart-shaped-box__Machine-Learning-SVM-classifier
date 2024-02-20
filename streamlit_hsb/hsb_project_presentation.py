@@ -29,30 +29,33 @@ def project_presentation():
         </ul>
         <h2>Methods</h2>
               <p>
-              <strong>Data analysis</strong>: Objectives were to provide general understanding of the
+                Development of this application was made following a four-steps plan, as described below.
+              </p>
+              <p>
+              <span class = 'method_step'>Data Analysis</span> - Objectives were to provide general understanding of the
               dataset, help in feature selection and draw clinically relevant insights on adult population
-              with cardiovascular disease. Dataset consisted of 70000 observation with a roughly 50% rate
+              with cardiovascular disease. Dataset consisted of <b>70000</b> observation with a roughly <b>50%</b> rate
               of patients and controls.
               Results from this analysis are available in the Data Viz section.              
               </p>
               <p>
-              <strong>Model Selection</strong>. Several models were evaluated on this dataset: Logistic
+              <span class = 'method_step'>Model Selection</span> - Several models were evaluated on this dataset: Logistic
               Regression, Random Forest, Support Vector Machines, K-Nearest Neighbors and AdaBoost. 
-              Support Vector Machines was selected for this project, as it presented the best accuracy 
-              (73.2%), a good rate of correct predictions for Class 0 (77.6%) and an acceptable rate 
-              for Class 1 (68.8%).               
+              <b>Support Vector Machines</b> was selected for this project, as it presented the best accuracy 
+              (<b>73.2%</b>), a good rate of correct predictions for Class 0 (<b>77.6%</b>) and an acceptable rate 
+              for Class 1 (<b>68.8%</b>).               
               </p>
               <p>
-              <strong>Hyperparameter Tuning</strong>. SVM model was tuned to improve its
+              <span class = 'method_step'>Hyperparameter Tuning</span> - SVM model was tuned to improve its
               performances, several combinations of kernel, C and gamma were tested.
-              RBF kernel, with C = 0.1 and gamma = 10 led to good and balanced performances, and was the best
+              <code>RBF</code> kernel, with <code>C = 0.1</code> and <code>gamma = 10</code> led to good and balanced performances, and was the best
               combination for a high recall without a significant loss in accuracy. 
               <br>Additionally, several tests were performed using some features combination. Models were also
               trained based on sex and on age groups. Unfortunately, these adjustments did not lead to significant
-              improvement in the model, with accuracy and recall for both class hovering around 73%.
+              improvement in the model, with accuracy and recall for both class hovering around <b>73%</b>.
               </p>
               <p>
-              <strong>Deployment</strong>. Final tuning on the model led to an accuracy of 73.6%.
+              <span class = 'method_step'>Deployment</span> - Final tuning on the model led to an accuracy of <b>73.6%</b>.
               This model was deployed in the present streamlit application.               
               </p>
     </div>

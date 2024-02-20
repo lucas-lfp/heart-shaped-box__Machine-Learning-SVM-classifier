@@ -39,3 +39,10 @@ div {
     text-align: right !important;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.method_step {
+
+    font-size: 18px;
+    color: darkgreen;
+    font-weight: bolder;
+}

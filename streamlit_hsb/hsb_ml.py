@@ -1,7 +1,11 @@
 import streamlit as st
+import pandas as pd
+import numpy as np
 from hsb_home import home
 from hsb_project_presentation import project_presentation
 from hsb_dataviz import data_viz
+from hsb_test_the_model import test_the_model
+
 
 
 
@@ -25,6 +29,9 @@ elif navigation == "Project Presentation":
 
 elif navigation == "Data Viz":
     data_viz()
+
+elif navigation == "Test the Model":
+    test_the_model()
 
 else: 
     st.markdown("c'est ça qu'est la véritché")
