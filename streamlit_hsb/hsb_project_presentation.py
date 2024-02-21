@@ -23,7 +23,7 @@ def project_presentation():
               available on
               <a href = 'https://www.kaggle.com/datasets/sulianova/cardiovascular-disease-dataset'>Kaggle</a>.</li>
             <li>Libraries used include <b>Pandas</b>, <b>NumPy</b>, <b>Matplotlib</b>, 
-             <b>Seaborn</b>, <b>SciPy</b> and <b>Sci-kit Learn</b>.</li>
+             <b>Seaborn</b>, <b>SciPy</b>, <b>Sci-kit Learn</b>, <b>Joblib</b> and of course <b>Streamlit</b>.</li>
             <li>The project is implemented in Python and designed as a Streamlit application, 
              with HTML and CSS used for formatting.</li>
         </ul>

@@ -5,16 +5,14 @@ from hsb_home import home
 from hsb_project_presentation import project_presentation
 from hsb_dataviz import data_viz
 from hsb_test_the_model import test_the_model
-
-
-
+from hsb_about_me import about_me
 
 ## CSS ##
 with open("hsb_ml_style.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 ## NAVIGATION ##
-navigation = st.sidebar.radio('NAVIGATION', ["Home", "Project Presentation", "Data Viz", "Test the Model", "Discussion", "About", "Contact"])
+navigation = st.sidebar.radio('NAVIGATION', ["Home", "Project Presentation", "Data Viz", "Test the Model", "About Me"])
 
 st.markdown(f"""            <p style = "font-variant: small-caps;">
             -- Heart Shaped Box Project --
@@ -33,8 +31,11 @@ elif navigation == "Data Viz":
 elif navigation == "Test the Model":
     test_the_model()
 
+elif navigation == "About Me":
+    about_me()
+
 else: 
-    st.markdown("c'est ça qu'est la véritché")
+    home()
 
 st.markdown(
     f"""

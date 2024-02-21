@@ -9,7 +9,7 @@ def test_the_model():
     le = joblib.load('hsb_le.pkl')
 
 
-    class CardioPredictor:
+    class Subject:
         def __init__(self, age, weight, height, ap_hi, ap_lo, cholesterol, gluc):
             self.age = age                                 # in years
             self.weight = weight                           # in kg
@@ -29,6 +29,56 @@ def test_the_model():
         def calculate_ap_m(self):
             # Calculate mean arterial pressure
             return round((self.ap_hi + 2 * self.ap_lo) / 3, 1)
+        
+        def make_predict(self):
+            # Gathers subjects data
+            subject_data = {
+                "age": [self.age],
+                "ap_hi": [self.ap_hi],
+                "ap_lo": [self.ap_lo],
+                "cholesterol": [self.cholesterol],
+                "gluc": [self.gluc],
+                "bmi": [self.bmi],
+                "ap_m": [self.ap_m]
+            }
+            
+            # Create a DataFrame
+            df_subject = pd.DataFrame(subject_data)
+            df_s1 = df_subject.copy()
+            # Preprocess data: label encoding, min-max scaling
+            df_subject['cholesterol'] = le.transform(df_subject['cholesterol'])
+            df_subject['gluc'] = le.transform(df_subject['gluc'])
+            
+            cols = df_subject.columns
+            df_subject = scaler.transform(df_subject)
+            df_subject = pd.DataFrame(df_subject, columns = cols)
+            
+            # Make the prediction
+            sub_pred = svm.predict(df_subject)
+            if sub_pred == [0]:
+                st.markdown(f"""
+                            <div class = 'all'>
+                            <p style = 'margin-left: 3px; border-left: 5px solid darkgreen; padding-left: 8px; padding-bottom: 5px;'>
+                            <b>Based on the information provided, the model predicts that it is unlikely for you to have a cardiovascular disease.</b> 
+                            <br>However, it's essential to maintain a healthy lifestyle and consult with a 
+                            healthcare professional for personalized advice and preventive measures.
+                            </p>
+                            <p>
+                            <i>The accuracy of this prediction is of 74%</i>.
+                            </p>
+                            </div>""", unsafe_allow_html=True)
+            else:
+                st.markdown(f"""
+                            <div class = 'all'>
+                            <p style = 'margin-left: 3px; border-left: 5px solid firebrick; padding-left: 8px; padding-bottom: 5px;'>
+                            <b>Based on the information provided, the model predicts that you may have a higher risk of cardiovascular disease.</b> 
+                            <br>It's important to consult with a healthcare professional for further evaluation and guidance.
+                            </p>
+                            <p>
+                            <i>The accuracy of this prediction is of 74%</i>.
+                            </p>
+                            </div>
+                            """, unsafe_allow_html=True)
         
     st.markdown(f"""
                 <div class = 'all'>
@@ -84,4 +134,9 @@ def test_the_model():
     gluc_str = st.selectbox("Glucose", options = list(gluc_map.keys()))
     gluc = gluc_map[gluc_str]
 
-    
+    if st.button(label = "Make a Prediction"):
+        user = Subject(age, weight, height, ap_hi, ap_lo, cholesterol, gluc)
+        user.make_predict()
+
+
+
