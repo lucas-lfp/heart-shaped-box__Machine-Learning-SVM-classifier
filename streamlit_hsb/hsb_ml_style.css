@@ -6,12 +6,14 @@ div {
 
 .titlediv {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border: 5px solid navy;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    border-top: 5px solid darkgreen;
+    border-bottom: 5px solid darkgreen;
+    padding-top: 10px;
+    padding-bottom: 10px;
     padding-left: 5px;
     padding-right: 5px;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 50px;
 }
 
 .titlep {
@@ -45,4 +47,14 @@ div {
     font-size: 18px;
     color: darkgreen;
     font-weight: bolder;
+}
+
+h1 {
+    border-bottom: 10px solid darkgreen;
+    margin-bottom: 15px;
+}
+
+h2 {
+    color : dimgray;
+    font-variant: small-caps;
 }

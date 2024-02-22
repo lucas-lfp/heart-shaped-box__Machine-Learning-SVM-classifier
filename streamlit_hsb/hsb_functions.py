@@ -21,9 +21,10 @@ def pval_txt(pval):
         str: The formatted p-value.
     """
     if pval < 0.0001:
-        return f'$\mathit{{p}}$ < 10\u207b\u2074'
+        return "<i>p</i> < 10⁻⁴"
     else:
-        return f'$\mathit{{p}}$ = {pval:.4f}'
+        return f"<i>p</i> = {pval:.4f}"
+
 
 def mean_sd_range(df, var):
     return (f"{np.mean(df[var.name]):.1f} ± {np.std(df[var.name]):.1f}", f"[{np.min(df[var.name]):.1f} - {np.max(df[var.name]):.1f}]")

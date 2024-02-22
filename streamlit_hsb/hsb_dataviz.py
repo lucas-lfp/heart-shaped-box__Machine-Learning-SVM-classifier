@@ -99,7 +99,7 @@ def data_viz():
                 were created. Features were analysed, so we could better understand how
                 they relate with each other, especially with the feature target.
             </p>
-            <h3>Major Findings</h3>
+            <h2>Major Findings</h2>
             <p>
                 Several variables showed a strong correlation with the target feature: 
                 prevalence of cardiovascular diseases increased with <b>age</b>, <b>BMI</b>
@@ -115,7 +115,7 @@ def data_viz():
                 also more likely to drink alcohol. Men were also taller than women, but
                 the distribution of BMI was comparable for both sexes.
             </p>
-            <h3>Insights for the Model to be built</h3>
+            <h2>Insights for the Model to be built</h2>
             <p>
                 The analysis has highlighted several avenues for designing an effective model:
                 <ul>
@@ -141,7 +141,7 @@ def data_viz():
                     biaised, as explained in the <i>Lifestyle</i> section.</li>
                 </ul>
             </p>
-            <h3>Limits of the Analysis</h3>
+            <h2>Limits of the Analysis</h2>
             <p>
                 Despite the analysis, some elements remain unclear:
                 <ul>
@@ -160,11 +160,10 @@ def data_viz():
                 of this dataset. 
             </p>
         </div>
-        <div class = 'all' style = 'border-top: 5px solid navy; margin-top: 40px'>
-            <p class = 'intro' style = 'padding-top: 25px'>
-                Ultimately, the project has effectively shaped a dataset suitable for machine 
-                learning applications by implementing preprocessing techniques and utilising 
-                data visualisations. The comprehensive analysis of the data has provided valuable 
+        <div class = 'all' style = 'border: 5px solid darkgreen; margin-top: 40px'>
+            <p class = 'intro' style = 'padding: 25px'>
+                Ultimately, a dataset suitable for machine was shaped throught this exploratory
+                data analysis phase. The comprehensive analysis of the data has provided valuable 
                 insights into the potential impacts of variables on the model.
                 Looking ahead to the second part of the project, we will undertake specific 
                 preprocessing steps, including encoding and standardization, as we prepare 
@@ -731,7 +730,7 @@ def data_viz():
         ax.set_xlabel(None)
         ax.set_xticks(ticks = ax.get_xticks(), labels = ['Females', 'Males'], fontsize = 12)
 
-        ax.set_title("Sex May Not Affect BMI", fontdict = fontdict_title)
+        ax.set_title("Sex has Limited Impact on BMI", fontdict = fontdict_title)
 
         # SCATTERPLOT height weight sex
         ax = fig.add_subplot(spec[1,1])
