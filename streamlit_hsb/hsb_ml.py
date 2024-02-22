@@ -6,6 +6,8 @@ from hsb_project_presentation import project_presentation
 from hsb_dataviz import data_viz
 from hsb_test_the_model import test_the_model
 from hsb_about_me import about_me
+import matplotlib.pyplot as plt
+
 
 ## CSS ##
 with open("hsb_ml_style.css") as f:
@@ -27,6 +29,7 @@ elif navigation == "Project Presentation":
 
 elif navigation == "Data Viz":
     data_viz()
+
 
 elif navigation == "Test the Model":
     test_the_model()
