@@ -4,9 +4,9 @@ import pandas as pd
 from sklearn.preprocessing import LabelEncoder, MinMaxScaler
 
 def test_the_model():
-    svm = joblib.load('hsb_svm.pkl')
-    scaler = joblib.load('hsb_scaler.pkl')
-    le = joblib.load('hsb_le.pkl')
+    svm = joblib.load('streamlit_hsb/hsb_svm.pkl')
+    scaler = joblib.load('streamlit_hsb/hsb_scaler.pkl')
+    le = joblib.load('streamlit_hsb/hsb_le.pkl')
 
 
     class Subject:

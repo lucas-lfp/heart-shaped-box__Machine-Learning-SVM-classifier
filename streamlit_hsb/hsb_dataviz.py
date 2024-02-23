@@ -9,9 +9,6 @@ import seaborn as sns
 from scipy.stats import shapiro, mannwhitneyu, chi2_contingency, spearmanr
 from matplotlib.text import Text
 
-print(sns.__version__)
-
-
 def data_viz():
     from hsb_functions import mean_sd_range, pval_shapiro, chi2_cardio, pval_txt, mwu_cardio, chi2_var, mean_sd_1, mean_sd_0, mean_sd, pp_1, pp_0, pp, pp_3_cardio, pp_3, pp_4_cardio, pp_4
 
@@ -21,9 +18,9 @@ def data_viz():
     palette_cardio = {"0":'lightcyan', "1": 'firebrick'}
     palette_sex = {"female": "coral", "male" : "seagreen"}
 
-    df_raw = pd.read_csv('cardio_train.csv', sep = ';').set_index('id')  # The purpose of this df is to keep a version of the dataset, it should therefore not be modified.
+    df_raw = pd.read_csv('streamlit_hsb/cardio_train.csv', sep = ';').set_index('id')  # The purpose of this df is to keep a version of the dataset, it should therefore not be modified.
 
-    df = pd.read_csv('clean_cvd.csv', sep = ',')
+    df = pd.read_csv('streamlit_hsb/clean_cvd.csv', sep = ',')
 
     # Pre-setting categorical data types to str to avoid issues with sns
     df[['smoke', 'alco', 'active', 'cardio', 'cholesterol', 'gluc','ap_aha', 'lifestyle', 'healthy_ls']] = df[['smoke', 'alco', 'active', 'cardio', 'cholesterol', 'gluc','ap_aha', 'lifestyle', 'healthy_ls']].astype('str') 
