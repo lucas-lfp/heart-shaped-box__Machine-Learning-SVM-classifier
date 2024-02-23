@@ -6,7 +6,7 @@ from hsb_test_the_model import test_the_model
 from hsb_about_me import about_me
 
 ## CSS ##
-with open("hsb_ml_style.css") as f:
+with open("streamlit_hsb/hsb_ml_style.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 ## NAVIGATION ##
