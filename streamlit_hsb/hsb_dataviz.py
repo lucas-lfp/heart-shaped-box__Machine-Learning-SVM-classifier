@@ -9,6 +9,7 @@ import seaborn as sns
 from scipy.stats import shapiro, mannwhitneyu, chi2_contingency, spearmanr
 from matplotlib.text import Text
 
+print(sns.__version__)
 
 
 def data_viz():

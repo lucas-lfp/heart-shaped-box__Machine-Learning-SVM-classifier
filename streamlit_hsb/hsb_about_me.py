@@ -1,5 +1,7 @@
 import streamlit as st
 
+print(st.__version__)
+
 def about_me():
     st.markdown(f"""
                 <div class = 'all'>

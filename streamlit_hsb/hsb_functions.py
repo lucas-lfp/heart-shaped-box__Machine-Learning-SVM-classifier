@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.stats import shapiro, mannwhitneyu, chi2_contingency, spearmanr
 import pandas as pd
-
+print(pd.__version__)
 
 def pval_shapiro(df, var):
     pval = shapiro(df[var.name])[1]
