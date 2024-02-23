@@ -2,8 +2,6 @@ import streamlit as st
 import joblib
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder, MinMaxScaler
-import sklearn
-print(sklearn.__version__)
 
 def test_the_model():
     svm = joblib.load('hsb_svm.pkl')
