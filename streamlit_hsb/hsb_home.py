@@ -10,7 +10,7 @@ def home():
             </div>
             """, unsafe_allow_html=True
         )
-    st.image('heart_rate_img.png', use_column_width=True)
+    st.image('streamlit_hsb/heart_rate_img.png', use_column_width=True)
     st.markdown(
         f"""
         <div class = 'all'>
