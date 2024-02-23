@@ -32,5 +32,5 @@ Development of this application was made following a four-steps plan, as describ
 4. **Deployment**
 
 ## Results
-- SVM Classifier Accuracy: 73.6%.
-- Usefull set of visualisation produced.
+- SVM Classifier Accuracy: **73.6%**.
+- Relevant insights gained on adult population with cardiovascular disease.
