@@ -1,0 +1,60 @@
+div {
+    text-align: justify;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-right: 2px;
+}
+
+.titlediv {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-top: 5px solid darkgreen;
+    border-bottom: 5px solid darkgreen;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.titlep {
+    font-size : 50px;
+    text-align: center !important;
+    font-variant: small-caps;
+}
+
+.titlep_2 {
+    font-size : 30px;
+    text-align: center !important;
+    margin-top: 10px;
+}  
+
+.title_sp {
+    text-align: center !important;
+    font-size: 20px !important;
+    font-weight: bold;
+}
+
+.signature {
+    margin-top: 60px;
+    padding-top: 15px;
+    border-top: 2px solid black;
+    text-align: right !important;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.method_step {
+
+    font-size: 18px;
+    color: darkgreen;
+    font-weight: bolder;
+}
+
+h1 {
+    border-bottom: 10px solid darkgreen;
+    margin-bottom: 15px;
+}
+
+h2 {
+    color : dimgray;
+    font-variant: small-caps;
+}

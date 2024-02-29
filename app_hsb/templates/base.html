@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='hsb_app_style.css') }}">
+
+</head>
+    
+<body>
+    <nav>
+        <a href=None>Home</a>
+        |
+        <a href=None>Data Viz</a>
+        |
+        <a href="None">Test the Model</a>
+        |
+        <a href="None">About</a>
+    </nav>
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
