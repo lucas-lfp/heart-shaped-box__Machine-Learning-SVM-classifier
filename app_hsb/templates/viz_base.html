@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <h1>{{ title }}</h1>
+    <h2>Variable Description</h2>
+    <div>
+        {{ table|safe }}
+    </div>
+    <h2>Visualisation</h2>
+    <div>
+        <img src = "data:image/png;base64, {{ plot_url }}">
+    </div>
+    <h2>Variable Analysis</h2>
+    <p>{{ analysis|safe }}</p>
+</div>
+
+{% endblock %}
