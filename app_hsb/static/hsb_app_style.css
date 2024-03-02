@@ -1,7 +1,13 @@
+.flex-container {
+    display: flex; /* This enables Flexbox for the container */
+    justify-content: center; /* This centers children along the main axis (horizontally for row direction) */
+    align-items: center; /* This centers children along the cross axis (vertically for row direction) */
+    height: 100vh; /* Example height to demonstrate centering. Adjust as needed. */
+}
+
 div {
     text-align: justify;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-right: 2px;
 }
 
 .titlediv {
@@ -61,6 +67,6 @@ h2 {
 
 .viz-img {
     width: 100%;
-    max-width: 500px;
+    max-width: 1500px;
     height: auto;
 }

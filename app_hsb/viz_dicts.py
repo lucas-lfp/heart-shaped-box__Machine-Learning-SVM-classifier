@@ -176,9 +176,9 @@ viz_data = {
             </table><br>""",
         "img": "bmi_height_weight_fig.png",
         "analysis": f"""<p>
-                A wide range of values was covered by both <code>height</code> ({mean_sd_range(df, height)[1]} cm) and <code>weight</code>
-            ({mean_sd_range(df, weight)[1]} kg). Consequently, range for <code>bmi</code> was <b>{mean_sd_range(df, bmi)[1]}</b> kg/m².
-            The median values for <code>bmi</code> was <b>{np.median(df['bmi']):.1f}</b> kg/m². Men were taller than women, 
+                A wide range of values was covered by both height ({mean_sd_range(df, height)[1]} cm) and weight
+            ({mean_sd_range(df, weight)[1]} kg). Consequently, range for bmi was <b>{mean_sd_range(df, bmi)[1]}</b> kg/m².
+            The median values for bmi was <b>{np.median(df['bmi']):.1f}</b> kg/m². Men were taller than women, 
             but the distribution of BMI was comparable in both groups.
             </p>
             <p>
@@ -193,11 +193,11 @@ viz_data = {
             </p>""",
         "conclusion": f"""<ul>
                 <li>Cardiovascular diseases prevalence increases with BMI</li>
-                <li>Distribution of <code>bmi</code> is right-skewed, with a max value of {np.max(df['bmi']):.1f} kg/m², but outlying
+                <li>Distribution of bmi is right-skewed, with a max value of {np.max(df['bmi']):.1f} kg/m², but outlying
                 values may have a limited impact</li>
-                <li>Among subjects with outlying values for <code>height</code> and/or <code>weight</code>, weight seemed to have
+                <li>Among subjects with outlying values for height and/or weight, weight seemed to have
                 a greater influence than height</li>
-                <li>It may be relevant to assess the influence of extreme values for <code>height</code> and <code>weight</code> on the 
+                <li>It may be relevant to assess the influence of extreme values for height and weight on the 
                 model</li>
             </ul>"""
     },
@@ -356,15 +356,15 @@ viz_data = {
                 of both parameters (<b>{tab_gc.loc["1", "1"]:.1%}</b>). Interestingly, prevalence of CV disease remained relatively constant
                 with increasing glucose levels, for a fixed cholesterol level. This suggest that while both parameters correlated 
                 with cardiovascular disease status ({pval_chi2_gluc} for glucose and {pval_chi2_chol} for cholesterol),
-                the feature <code>gluc</code> may bring limited information due to the influence of <code>cholesterol</code>.
+                the feature <b>gluc</b> may bring limited information due to the influence of <b>cholesterol</b>.
             </p>""",
         "conclusion" : f"""<ul>
                 <li>Majority of subjects had normal values for both glucose and cholesterol ({tab_gc.loc["1", "1"]:.1%})</li>
                 <li>Prevalence of cardiovascular diseases increased with glucose and cholesterol</li>
-                <li>Modalities "Above normal" and "Well above normal" could be merged for <code>gluc</code></li>
-                <li>Dropping <code>gluc</code> may be considered as it may bring a limited amount of information compared to 
-                <code>cholesterol</code></li>
-                <li>Cut-off values for both <code>gluc</code> and <code>cholesterol</code> modalities are not known, there could
+                <li>Modalities "Above normal" and "Well above normal" could be merged for gluc</li>
+                <li>Dropping gluc may be considered as it may bring a limited amount of information compared to 
+                cholesterol</li>
+                <li>Cut-off values for both gluc and cholesterol modalities are not known, there could
                 be some bias, they therefore need to be interpreted with caution</li>
             </ul>"""
     },
@@ -434,12 +434,12 @@ viz_data = {
             </p>""",
         "conclusion" : f"""<ul>
                 <li>A small number of subjects reported smoking and or drinking alcohol, and these variables did not 
-                display any obvious correlation with <code>cardio</code></li>
+                display any obvious correlation with cardio</li>
                 <li>Smoking or exercising did not influence blood pressure levels</li>
                 <li>A tendency of higher CV disease prevalence could exist among subjects that do not exercise</li>
                 <li>Males were more likely to smoke and drink alcohol, while a comparable proportion of males and females
                 reported physical activity</li>
-                <li><code>smoke</code> should not be included in the model due to plausible bias</li>
+                <li>smoke should not be included in the model due to plausible bias</li>
             </ul>"""
     }
 }

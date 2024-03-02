@@ -29,6 +29,13 @@ def visualization(viz_id):
 
     return render_template("viz_base.html", **data)
 
+@app.route('/ml')
+def ml():
+    return render_template("ml.html")
+
+@app.route('/about')
+def about():
+    return render_template("about.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
