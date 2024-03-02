@@ -1893,18 +1893,6 @@ def data_viz():
                 identical for systolic, diastolic and mean blood pressure, and distributions were comparable.        
             </p>
             <p>
-                When subjects were divided into seven groups according to their lifestyle habits, no strong effect was found. Overall, 
-                the prevalence of cardiovascular disease remained around <b>50%</b> in every group. A paradoxal tendency was seen in the group
-                of subjects who smoke, drink alcohol and exercise, as they show the lower prevalence of CV disease
-                (<b>{df_lifestyle.loc[df_lifestyle['lifestyle'] == "4",'cardio_1'].values[0]:.1f}%</b>), but the number of subjects in this group was very small
-                (<i>n</i> = {df['lifestyle'].value_counts()["4"]:.0f}). This finding questions the relevance of the <code>smoke</code>
-                feature: the information we would actually need to know is "<i>Was the subject a smoker a the time of diagnosis ?</i>".
-                This feature may be biaised as it is likely that former smokers quitted smoking once the diagnosis was made.
-                Another tendency found is that CV disease prevalance was the
-                highest in all groups where subjects did not exercise, regardless of their other habits. No strong variation in age was
-                found among all these groups.
-            </p>
-            <p>
                 Finally, male subjects were <b>more likely</b> to smoke and drink alcohol than females: 
                 <b>{df_sex_ls[(df_sex_ls['sex'] == 'male') & (df_sex_ls['parameter'] == "smoke_1")]['percentage'].values[0]:.1f}%</b> of males were
                 smokers and <b>{df_sex_ls[(df_sex_ls['sex'] == 'male') & (df_sex_ls['parameter'] == "alco_1")]['percentage'].values[0]:.1f}%</b> drank

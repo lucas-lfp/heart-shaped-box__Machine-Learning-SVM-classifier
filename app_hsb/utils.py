@@ -2,16 +2,23 @@ import numpy as np
 from scipy.stats import shapiro, mannwhitneyu, chi2_contingency, spearmanr
 import pandas as pd
 
-# Creating a class "Parameter" to access parameter-related information
-class Parameter:
-    def __init__(self, name, full_name, unit, mod, mod_names):
-        self.name = name
-        self.full_name = full_name
-        self.unit = unit
-        self.label = f'{self.full_name} ({self.unit})'
-        self.mod = mod
-        self.mod_names = mod_names
+def load_data():
+    df = pd.read_csv('clean_cvd.csv')
+     # Pre-setting categorical data types to str to avoid issues with sns
+    df[['smoke', 'alco', 'active', 'cardio', 'cholesterol', 'gluc','ap_aha', 'lifestyle', 'healthy_ls']] = df[['smoke', 'alco', 'active', 'cardio', 'cholesterol', 'gluc','ap_aha', 'lifestyle', 'healthy_ls']].astype('str') 
 
+    # Setting relevant data types
+    df[['sex', 'smoke', 'alco', 'active', 'cardio', 'lifestyle', 'healthy_ls']] = df[['sex', 'smoke', 'alco', 'active', 'cardio', 'lifestyle', 'healthy_ls']].astype('category')
+    cat_gluc_chol = pd.CategoricalDtype(categories = ["1", "2", "3"], ordered = True)
+    df[['cholesterol', 'gluc']] = df[['cholesterol', 'gluc']].astype(cat_gluc_chol)
+    cat_aha = pd.CategoricalDtype(categories = ["1", "2", "3", "4"], ordered = True)
+    df['ap_aha'] = df['ap_aha'].astype(cat_aha)
+    cat_lifestyle = pd.CategoricalDtype(categories = ["0", "1", "2", "3", "4", "5", "6", "7"], ordered = False)
+    df['lifestyle'] = df['lifestyle'].astype(cat_lifestyle)
+    return df
+
+def load_raw_data():
+    return pd.read_csv('cardio_train.csv', sep = ";")
 
 def pval_shapiro(df, var):
     pval = shapiro(df[var.name])[1]
@@ -37,6 +44,7 @@ def pval_txt(pval):
 
 
 def mean_sd_range(df, var):
+    print(df.columns)
     return (f"{np.mean(df[var.name]):.1f} ± {np.std(df[var.name]):.1f}", f"[{np.min(df[var.name]):.1f} - {np.max(df[var.name]):.1f}]")
 
 
