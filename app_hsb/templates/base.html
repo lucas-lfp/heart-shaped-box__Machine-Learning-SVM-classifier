@@ -6,23 +6,33 @@
 </head>
     
 <body>
-    <nav>
-        <a href="/">Home</a>
-        |
-        <a href="/viz-home">Data Viz</a>
-        |
-        <a href="/ml">Test the Model</a>
-        |
-        <a href="about">About</a>
-    </nav>
-    <div>
-        {% block content %}
-        {% endblock %}
-    </div>
-    <div class='signature'>
-        Dr. Lucas Foulon-Pinto<a href="https://www.linkedin.com/in/lucasfoulonpinto/" target="_blank" style = "text-decoration: none; font-size: 20px">🐊</a>
-        <br>Pharm.D, Ph.D
-        <br>Winter 2024 - <i>Version 1.0.0</i>
+    <div class = "main">
+        <div id = "full-nav">
+            <nav id = "main-nav">
+                <ul class = "ul-nav">
+                    <li><a href="/" class = "main-content">Home</a></li>
+                    <li><a href="/ml" class = "main-content">Test the Model</a></li>
+                    <li><a href="/viz-home" class = "main-content">Explore the Data</a></li>
+                    <li><a href="/about" class = "main-content">About</a></li>
+                </ul>
+            </nav>
+            <div id = "app-head">
+                <p>
+                    Cardiovascular Disease Detection App
+                </p>
+            </div>
+        </div>
+        <div class = "content">
+            <div>
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div class='signature'>
+                Dr. Lucas Foulon-Pinto<a href="https://www.linkedin.com/in/lucasfoulonpinto/" target="_blank" style = "text-decoration: none; font-size: 20px">🐊</a>
+                <br>Pharm.D, Ph.D
+                <br>Winter 2024 - <i>Version 1.0.0</i>
+            </div>
+        </div>
     </div>
 </body>
 </html>

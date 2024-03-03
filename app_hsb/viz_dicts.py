@@ -59,15 +59,15 @@ df_sex_ls = pd.melt(df_sex_ls.drop(['active_0', 'smoke_0', 'alco_0', 'healthy_0'
 viz_data = {
     "age" : {
         "title": "Age",
-        "table": f"""<table class = "table_1" style = "width: 75% !important">
-                <tr class = "head_tr">
+        "table": f"""<table>
+                <tr>
                     <th>Parameter</th>
                     <th>Mean ± SD</th>
                     <th>Range</th>
                     <th>Normality</th>
                 </tr>
                 <tr>
-                    <td style = 'font-weight: bold'>{age.full_name} ({age.unit})</td>
+                    <td class = "param-name">{age.full_name} ({age.unit})</td>
                     <td>{mean_sd_range(df, age)[0]}</td>
                     <td>{mean_sd_range(df, age)[1]}</td>
                     <td>{pval_shapiro(df, age)}</td>
@@ -99,24 +99,24 @@ viz_data = {
     },
     "sex" : {
         "title" : "Sex",
-        "table" : f"""<table class = "table_1" style = "width: 75% !important">
-            <tr class = "head_tr">
+        "table" : f"""<table>
+            <tr>
                 <th>Parameter</th>
                 <th>Modalities</th>
                 <th>Observations (<i>n</i>)</th>
                 <th>Observations (%)</th>
             </tr>
-            <tr style = 'border-top: 1px solid black'>
-                <td rowspan = "2" style = 'font-weight: bold'>{sex.full_name}</td>
-                <td style = 'border-left: 1px dashed black'>{sex.mod[0]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[sex.name].value_counts()[sex.mod[0]]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[sex.name].value_counts(normalize = True)[sex.mod[0]]:.1%}</td>
+            <tr>
+                <td rowspan = "2" class = "param-name">{sex.full_name}</td>
+                <td>{sex.mod[0]}</td>
+                <td>{df[sex.name].value_counts()[sex.mod[0]]}</td>
+                <td>{df[sex.name].value_counts(normalize = True)[sex.mod[0]]:.1%}</td>
             </tr>
             </tr>
-            <tr style = 'border-top: 1px solid black'>
-                <td style = 'border-left: 1px dashed black'>{sex.mod[1]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[sex.name].value_counts()[sex.mod[1]]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[sex.name].value_counts(normalize = True)[sex.mod[1]]:.1%}</td>
+            <tr>
+                <td>{sex.mod[1]}</td>
+                <td>{df[sex.name].value_counts()[sex.mod[1]]}</td>
+                <td>{df[sex.name].value_counts(normalize = True)[sex.mod[1]]:.1%}</td>
             </tr>
         </table><br>""",
         "img" : "sex_fig.png",
@@ -148,27 +148,27 @@ viz_data = {
     },
     "bmi" : {
         "title" : "Body-Mass Index, Height and Weight",
-        "table" : f"""<table class = "table_1" style = "width: 75%">
-                <tr class = "head_tr">
+        "table" : f"""<table>
+                <tr>
                     <th>Parameter</th>
                     <th>Mean ± SD</th>
                     <th>Range</th>
                     <th>Normality</th>
                 </tr>
                 <tr>
-                    <td style = 'font-weight: bold'>{bmi.full_name} ({bmi.unit})</td>
+                    <td class = "param-name">{bmi.full_name} ({bmi.unit})</td>
                     <td>{mean_sd_range(df, bmi)[0]}</td>
                     <td>{mean_sd_range(df, bmi)[1]}</td>
                     <td>{pval_shapiro(df, bmi)}</td>
                 </tr>
-                <tr style = 'border-top: 1.5px solid black'>
-                    <td style = 'font-weight: bold'>{weight.full_name} ({weight.unit})</td>
+                <tr>
+                    <td class = "param-name">{weight.full_name} ({weight.unit})</td>
                     <td>{mean_sd_range(df, weight)[0]}</td>
                     <td>{mean_sd_range(df, weight)[1]}</td>
                     <td>{pval_shapiro(df, weight)}</td>
                 </tr>
-                <tr style = 'border-top: 1.5px solid black'>
-                    <td style = 'font-weight: bold'>{height.full_name} ({height.unit})</td>
+                <tr>
+                    <td class = "param-name">{height.full_name} ({height.unit})</td>
                     <td>{mean_sd_range(df, height)[0]}</td>
                     <td>{mean_sd_range(df, height)[1]}</td>
                     <td>{pval_shapiro(df, height)}</td>
@@ -203,57 +203,54 @@ viz_data = {
     },
     "bp": {
         "title" : "Blood Pressure",
-        "table" : f"""<table class = "table_1" style = "width: 75% !important">
-                <tr class = "head_tr">
+        "table" : f"""<table>
+                <tr>
                     <th>Parameter</th>
                     <th>Mean ± SD</th>
                     <th>Range</th>
                     <th>Normality</th>
                 </tr>
                 <tr>
-                    <td style = 'font-weight: bold'>{ap_hi.full_name} ({ap_hi.unit})</td>
+                    <td class = "param-name">{ap_hi.full_name} ({ap_hi.unit})</td>
                     <td>{mean_sd_range(df, ap_hi)[0]}</td>
                     <td>{mean_sd_range(df, ap_hi)[1]}</td>
                     <td>{pval_shapiro(df, ap_hi)}</td>
                 </tr>
                 <tr>
-                    <td style = 'font-weight: bold'>{ap_lo.full_name} ({ap_lo.unit})</td>
+                    <td class = "param-name">{ap_lo.full_name} ({ap_lo.unit})</td>
                     <td>{mean_sd_range(df, ap_lo)[0]}</td>
                     <td>{mean_sd_range(df, ap_lo)[1]}</td>
                     <td>{pval_shapiro(df, ap_lo)}</td>
                 </tr>
             </table>
             <br>
-            <table class = "table_1" style = "width: 75% !important">
-            <tr class = "head_tr">
+            <table>
+            <tr>
                 <th>Parameter</th>
                 <th>Modalities</th>
                 <th>Observations (<i>n</i>)</th>
                 <th>Observations (%)</th>
             </tr>
-            <tr style = 'border-top: 1px solid black'>
-                <td rowspan = "4" style = 'font-weight: bold'>{ap_aha.full_name}</td>
-                <td style = 'border-left: 1px dashed black'>{ap_aha.mod_names[0]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[ap_aha.name].value_counts()[ap_aha.mod[0]]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[ap_aha.name].value_counts(normalize = True)[ap_aha.mod[0]]:.1%}</td>
+            <tr>
+                <td rowspan = "4" class = "param-name">{ap_aha.full_name}</td>
+                <td>{ap_aha.mod_names[0]}</td>
+                <td>{df[ap_aha.name].value_counts()[ap_aha.mod[0]]}</td>
+                <td>{df[ap_aha.name].value_counts(normalize = True)[ap_aha.mod[0]]:.1%}</td>
             </tr>
+            <tr>
+                <td>{ap_aha.mod_names[1]}</td>
+                <td>{df[ap_aha.name].value_counts()[ap_aha.mod[1]]}</td>
+                <td>{df[ap_aha.name].value_counts(normalize = True)[ap_aha.mod[1]]:.1%}</td> 
             </tr>
-            <tr style = 'border-top: 1px solid black'>
-                <td style = 'border-left: 1px dashed black'>{ap_aha.mod_names[1]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[ap_aha.name].value_counts()[ap_aha.mod[1]]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[ap_aha.name].value_counts(normalize = True)[ap_aha.mod[1]]:.1%}</td>
-            </tr>   
+            <tr>
+                <td>{ap_aha.mod_names[2]}</td>
+                <td>{df[ap_aha.name].value_counts()[ap_aha.mod[2]]}</td>
+                <td>{df[ap_aha.name].value_counts(normalize = True)[ap_aha.mod[2]]:.1%}</td>
             </tr>
-            <tr style = 'border-top: 1px solid black'>
-                <td style = 'border-left: 1px dashed black'>{ap_aha.mod_names[2]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[ap_aha.name].value_counts()[ap_aha.mod[2]]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[ap_aha.name].value_counts(normalize = True)[ap_aha.mod[2]]:.1%}</td>
-            </tr>
-            </tr>
-            <tr style = 'border-top: 1px solid black'>
-                <td style = 'border-left: 1px dashed black'>{ap_aha.mod_names[3]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[ap_aha.name].value_counts()[ap_aha.mod[3]]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[ap_aha.name].value_counts(normalize = True)[ap_aha.mod[3]]:.1%}</td>
+            <tr>
+                <td>{ap_aha.mod_names[3]}</td>
+                <td>{df[ap_aha.name].value_counts()[ap_aha.mod[3]]}</td>
+                <td>{df[ap_aha.name].value_counts(normalize = True)[ap_aha.mod[3]]:.1%}</td>
             </tr>
         </table><br>""",
         "img" : "bp_fig.png",
@@ -288,49 +285,49 @@ viz_data = {
     },
     "gluc-chol" : {
         "title" : "Glucose and Cholesterol",
-        "table" : f"""<table class = "table_1" style = "width: 75% !important">
-            <tr class = "head_tr">
+        "table" : f"""<table>
+            <tr>
                 <th>Parameter</th>
                 <th>Modalities</th>
                 <th>Observations (<i>n</i>)</th>
                 <th>Observations (%)</th>
             </tr>
-            <tr style = 'border-top: 1px solid black'>
-                <td rowspan = "3" style = 'font-weight: bold'>{cholesterol.full_name}</td>
-                <td style = 'border-left: 1px dashed black'>{cholesterol.mod_names[0]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[cholesterol.name].value_counts()[cholesterol.mod[0]]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[cholesterol.name].value_counts(normalize = True)[cholesterol.mod[0]]:.1%}</td>
+            <tr>
+                <td rowspan = "3" class = "param-name">{cholesterol.full_name}</td>
+                <td>{cholesterol.mod_names[0]}</td>
+                <td>{df[cholesterol.name].value_counts()[cholesterol.mod[0]]}</td>
+                <td>{df[cholesterol.name].value_counts(normalize = True)[cholesterol.mod[0]]:.1%}</td>
             </tr>
             </tr>
-            <tr style = 'border-top: 1px solid black'>
-                <td style = 'border-left: 1px dashed black'>{cholesterol.mod_names[1]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[cholesterol.name].value_counts()[cholesterol.mod[1]]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[cholesterol.name].value_counts(normalize = True)[cholesterol.mod[1]]:.1%}</td>
+            <tr>
+                <td>{cholesterol.mod_names[1]}</td>
+                <td>{df[cholesterol.name].value_counts()[cholesterol.mod[1]]}</td>
+                <td>{df[cholesterol.name].value_counts(normalize = True)[cholesterol.mod[1]]:.1%}</td>
             </tr>   
             </tr>
-            <tr style = 'border-top: 1px solid black'>
-                <td style = 'border-left: 1px dashed black'>{cholesterol.mod_names[2]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[cholesterol.name].value_counts()[cholesterol.mod[2]]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[cholesterol.name].value_counts(normalize = True)[cholesterol.mod[2]]:.1%}</td>
+            <tr>
+                <td>{cholesterol.mod_names[2]}</td>
+                <td>{df[cholesterol.name].value_counts()[cholesterol.mod[2]]}</td>
+                <td>{df[cholesterol.name].value_counts(normalize = True)[cholesterol.mod[2]]:.1%}</td>
             </tr>
             </tr>
-            <tr style = 'border-top: 3px solid black'>
-                <td rowspan = "3" style = 'font-weight: bold'>{gluc.full_name}</td>
-                <td style = 'border-left: 1px dashed black'>{gluc.mod_names[0]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[gluc.name].value_counts()[gluc.mod[0]]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[gluc.name].value_counts(normalize = True)[gluc.mod[0]]:.1%}</td>
+            <tr>
+                <td rowspan = "3" class = "param-name">{gluc.full_name}</td>
+                <td>{gluc.mod_names[0]}</td>
+                <td>{df[gluc.name].value_counts()[gluc.mod[0]]}</td>
+                <td>{df[gluc.name].value_counts(normalize = True)[gluc.mod[0]]:.1%}</td>
             </tr>
             </tr>
-            <tr style = 'border-top: 1px solid black'>
-                <td style = 'border-left: 1px dashed black'>{gluc.mod_names[1]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[gluc.name].value_counts()[gluc.mod[1]]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[gluc.name].value_counts(normalize = True)[gluc.mod[1]]:.1%}</td>
+            <tr>
+                <td>{gluc.mod_names[1]}</td>
+                <td>{df[gluc.name].value_counts()[gluc.mod[1]]}</td>
+                <td>{df[gluc.name].value_counts(normalize = True)[gluc.mod[1]]:.1%}</td>
             </tr>   
             </tr>
-            <tr style = 'border-top: 1px solid black'>
-                <td style = 'border-left: 1px dashed black'>{gluc.mod_names[2]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[gluc.name].value_counts()[gluc.mod[2]]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[gluc.name].value_counts(normalize = True)[gluc.mod[2]]:.1%}</td>
+            <tr>
+                <td>{gluc.mod_names[2]}</td>
+                <td>{df[gluc.name].value_counts()[gluc.mod[2]]}</td>
+                <td>{df[gluc.name].value_counts(normalize = True)[gluc.mod[2]]:.1%}</td>
             </tr>
         </table><br>""",
     "img" : "gluc_chol_fig.png",
@@ -370,45 +367,45 @@ viz_data = {
     },
     "lifestyle" : {
         "title" : "Lifestyle",
-        "table" : f"""<table class = "table_1" style = "width: 75% !important">
-            <tr class = "head_tr">
+        "table" : f"""<table>
+            <tr>
                 <th>Parameter</th>
                 <th>Modalities</th>
                 <th>Observations (<i>n</i>)</th>
                 <th>Observations (%)</th>
             </tr>
-            <tr style = 'border-top: 1px solid black'>
-                <td rowspan = "2" style = 'font-weight: bold'>{smoke.full_name}</td>
-                <td style = 'border-left: 1px dashed black'>{smoke.mod_names[0]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[smoke.name].value_counts()[smoke.mod[0]]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[smoke.name].value_counts(normalize = True)[smoke.mod[0]]:.1%}</td>
+            <tr>
+                <td rowspan = "2" class = "param-name">{smoke.full_name}</td>
+                <td>{smoke.mod_names[0]}</td>
+                <td>{df[smoke.name].value_counts()[smoke.mod[0]]}</td>
+                <td>{df[smoke.name].value_counts(normalize = True)[smoke.mod[0]]:.1%}</td>
             </tr>
-            <tr style = 'border-top: 1px solid black'>
-                <td style = 'border-left: 1px dashed black'>{smoke.mod_names[1]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[smoke.name].value_counts()[smoke.mod[1]]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[smoke.name].value_counts(normalize = True)[smoke.mod[1]]:.1%}</td>
+            <tr>
+                <td>{smoke.mod_names[1]}</td>
+                <td>{df[smoke.name].value_counts()[smoke.mod[1]]}</td>
+                <td>{df[smoke.name].value_counts(normalize = True)[smoke.mod[1]]:.1%}</td>
             </tr>   
-            <tr style = 'border-top: 3px solid black'>
-                <td rowspan = "2" style = 'font-weight: bold'>{alco.full_name}</td>
-                <td style = 'border-left: 1px dashed black'>{alco.mod_names[0]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[alco.name].value_counts()[alco.mod[0]]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[alco.name].value_counts(normalize = True)[alco.mod[0]]:.1%}</td>
+            <tr>
+                <td rowspan = "2" class = "param-name">{alco.full_name}</td>
+                <td>{alco.mod_names[0]}</td>
+                <td>{df[alco.name].value_counts()[alco.mod[0]]}</td>
+                <td>{df[alco.name].value_counts(normalize = True)[alco.mod[0]]:.1%}</td>
             </tr>
             <tr style = 'border-top: 1px solid black'>
-                <td style = 'border-left: 1px dashed black'>{alco.mod_names[1]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[alco.name].value_counts()[alco.mod[1]]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[alco.name].value_counts(normalize = True)[alco.mod[1]]:.1%}</td>
+                <td>{alco.mod_names[1]}</td>
+                <td>{df[alco.name].value_counts()[alco.mod[1]]}</td>
+                <td>{df[alco.name].value_counts(normalize = True)[alco.mod[1]]:.1%}</td>
             </tr> 
-            <tr style = 'border-top: 3px solid black'>
-                <td rowspan = "2" style = 'font-weight: bold'>{active.full_name}</td>
-                <td style = 'border-left: 1px dashed black'>{active.mod_names[0]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[active.name].value_counts()[active.mod[0]]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[active.name].value_counts(normalize = True)[active.mod[0]]:.1%}</td>
+            <tr>
+                <td rowspan = "2" class = "param-name">{active.full_name}</td>
+                <td>{active.mod_names[0]}</td>
+                <td>{df[active.name].value_counts()[active.mod[0]]}</td>
+                <td>{df[active.name].value_counts(normalize = True)[active.mod[0]]:.1%}</td>
             </tr>
-            <tr style = 'border-top: 1px solid black'>
-                <td style = 'border-left: 1px dashed black'>{active.mod_names[1]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[active.name].value_counts()[active.mod[1]]}</td>
-                <td style = 'border-left: 1px dashed black'>{df[active.name].value_counts(normalize = True)[active.mod[1]]:.1%}</td>
+            <tr>
+                <td>{active.mod_names[1]}</td>
+                <td>{df[active.name].value_counts()[active.mod[1]]}</td>
+                <td>{df[active.name].value_counts(normalize = True)[active.mod[1]]:.1%}</td>
             </tr> 
         </table><br>""",
         "img" : "lifestyle_fig.png",

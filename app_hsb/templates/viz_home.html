@@ -1,13 +1,26 @@
 {% extends "base.html" %}
 
-{% block content%}
-<h1>Select a feature to see a detailed analysis</h1>
-<div>
-    <a href = "visualization/age">AGE</a>
-    <a href = "visualization/sex">SEX</a>
-    <a href = "visualization/bmi">BMI, HEIGHT, WEIGHT</a>
-    <a href = "visualization/bp">BLOOD PRESSURE</a>
-    <a href = "visualization/gluc-chol">GLUCOSE AND CHOLESTEROL</a>
-    <a href = "visualization/lifestyle">LIFESTYLE</a>
+{% block content %}
+<div id = "viz-home-div">
+    <div id = "viz-home-top">
+        <p>
+            Select a feature to display the detailed analysis
+        </p>
+    </div>
+    <div id = "viz-home-nav">
+        <a href = "/visualization/age" class = "feat-select">AGE</a>
+        |
+        <a href = "/visualization/sex" class = "feat-select">SEX</a>
+        |
+        <a href = "/visualization/bmi" class = "feat-select">BMI, HEIGHT, WEIGHT</a>
+        |
+        <a href = "/visualization/bp" class = "feat-select">BLOOD PRESSURE</a>
+        |
+        <a href = "/visualization/gluc-chol" class = "feat-select">GLUCOSE AND CHOLESTEROL</a>
+        |
+        <a href = "/visualization/lifestyle" class = "feat-select">LIFESTYLE</a>
+    </div>
 </div>
+
+
 {% endblock %}

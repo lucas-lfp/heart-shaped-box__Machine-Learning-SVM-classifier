@@ -1,43 +1,85 @@
-.flex-container {
-    display: flex; /* This enables Flexbox for the container */
-    justify-content: center; /* This centers children along the main axis (horizontally for row direction) */
-    align-items: center; /* This centers children along the cross axis (vertically for row direction) */
-    height: 100vh; /* Example height to demonstrate centering. Adjust as needed. */
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+body {
+    background-color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.main {
+    width: 80%;
+    max-width: 1000px;
+    min-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#full-nav {
+    display: flex; /* Keeps items in a flexible layout */
+    flex-wrap: wrap; /* Allows items to wrap to the next line if needed */
+    justify-content: space-between; /* Spreads items across the container */
+    align-items: center; /* Vertically aligns items in the middle */
+    max-width: 100%; /* Ensures the nav does not exceed the width of its container */
+    overflow: hidden; /* Hides any content that overflows its box */
+    background-color: dimgray;
+    border-radius: 15px; 
+}
+
+#main-nav, #app-head {
+    flex: 1; /* Gives equal flexibility to both, allowing them to grow */
+    
+}
+
+.ul-nav {
+    list-style-type: none;
+}
+
+#main-nav {
+    padding: 10px 0 10px 20px;
+    align-items: center;
+}
+
+#app-head {
+    text-align: center;
+    font-variant: small-caps;
+    font-size: larger;
+    font-weight: 600;
+}
+
+.content {
+    padding-top: 10px;
+}
+
+a.main-content, a:link.main-content, a:visited.main-content {
+    color: whitesmoke;
+    text-decoration: none;
+    font-weight: 100;
+}
+
+a.feat-select, a:link.feat-select, a:visited.feat-select {
+    color: dimgray;
+    text-decoration: none;
+    font-weight: 400;
+}
+
 
 div {
     text-align: justify;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.titlediv {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border-top: 5px solid darkgreen;
+.viz-h1 {
     border-bottom: 5px solid darkgreen;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-top: 20px;
-    margin-bottom: 50px;
-}
-
-.titlep {
-    font-size : 50px;
-    text-align: center !important;
     font-variant: small-caps;
+    margin-bottom: 25px;
 }
 
-.titlep_2 {
-    font-size : 30px;
-    text-align: center !important;
-    margin-top: 10px;
-}  
-
-.title_sp {
-    text-align: center !important;
-    font-size: 20px !important;
-    font-weight: bold;
+.viz-h2 {
+    color: dimgray;
+    margin: 25px 0;
 }
 
 .signature {
@@ -48,25 +90,39 @@ div {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.method_step {
-
-    font-size: 18px;
-    color: darkgreen;
-    font-weight: bolder;
+#viz-home-div{
+    margin: 30px 0;
 }
 
-h1 {
-    border-bottom: 10px solid darkgreen;
-    margin-bottom: 15px;
+#viz-home-top {
+    padding-top: 0;
+    text-align: center;
+    font-style: italic;
+    font-size: large;
+    margin-bottom: 10px;
 }
 
-h2 {
-    color : dimgray;
-    font-variant: small-caps;
+#viz-home-nav {
+    text-align: center;
 }
 
-.viz-img {
-    width: 100%;
-    max-width: 1500px;
-    height: auto;
+#viz-content {
+    padding-top: 0;
+}
+
+.main img {
+    max-width: 100%; /* Ensures the image width does not exceed the width of .main */
+    height: auto; /* Keeps the image's aspect ratio intact */
+    display: block; /* Removes any default inline spacing */
+    margin: 0 auto; /* Optionally centers the image horizontally if it's smaller than .main */
+}
+
+table {
+    border: 1px solid black;
+    width: 85%;
+}
+
+th, td {
+    border: 1px solid black;
+    text-align: center;
 }

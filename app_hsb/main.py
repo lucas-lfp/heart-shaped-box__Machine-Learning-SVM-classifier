@@ -8,8 +8,6 @@ df = load_data()
 df_raw = load_raw_data()
 
 
-
-
 @app.route('/')
 def home():
     return render_template('home.html')
