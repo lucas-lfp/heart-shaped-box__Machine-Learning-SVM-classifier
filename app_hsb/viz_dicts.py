@@ -75,14 +75,17 @@ viz_data = {
             </table><br>""",
         "img": "age_fig.png",
         "analysis": f"""<p>
-                The variable <b>{age.name}</b> is not normally distributed and shows a left skew. The minimal age value found
-                in the original dataset was {np.min(df_raw['age'])/365.25:.1f} yo. There was {len(df_raw[df_raw['age']/365.25 < 32])}
-                individuals below 32 years old, and there no subject in the age group [32 - 38] yo. None 
+                The minimal age value found
+                in the original dataset was <b>{np.min(df_raw['age'])/365.25:.1f}</b> years old. In this cohort, {len(df_raw[df_raw['age']/365.25 < 32])}
+                individuals were below 32 years old, and there was no subject in the age group [32 - 38] years old. None 
                 of the subjects below 32 years old had cardiovascular disease, and they were considered outliers due to the existing age gap. It was decided to
-                take them out of the analysis. Consequently, the range for <b>{age.name}</b> is
+                take them out of the analysis.
+                </p>
+                <p>
+                Consequently, the range for <b>{age.name}</b> is
                 <b>[{np.min(df[age.name]):.0f} - {np.max(df[age.name]):.0f}]</b> years old.
                 The max age value is surprisingly low as cardiovascular diseases are common among older individuals,
-                the reason why no data from elderly patients were recorded is not known, but was probably a protocol requirement.
+                the reason why no data from elderly patients were recorded is not known, but probably was a protocol requirement.
             </p>
             <p>
                 The prevalence of CV diseases is known to increase with age, as it is the case in this cohort. The proportion of

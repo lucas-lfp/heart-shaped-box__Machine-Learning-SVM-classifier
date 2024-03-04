@@ -112,7 +112,7 @@ div {
 }
 
 .main img {
-    max-width: 100%; /* Ensures the image width does not exceed the width of .main */
+    max-width: 80%; /* Ensures the image width does not exceed the width of .main */
     height: auto; /* Keeps the image's aspect ratio intact */
     display: block; /* Removes any default inline spacing */
     margin: 0 auto; /* Optionally centers the image horizontally if it's smaller than .main */
@@ -180,4 +180,8 @@ th {
     border-left: 10px solid darkgreen;
     list-style-type:square;
 
+}
+
+p {
+    line-height: 1.5;
 }
