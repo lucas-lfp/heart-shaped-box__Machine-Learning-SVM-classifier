@@ -60,17 +60,17 @@ viz_data = {
     "age" : {
         "title": "Age",
         "table": f"""<table>
-                <tr>
+                <tr class = "head-tr">
                     <th>Parameter</th>
                     <th>Mean ± SD</th>
                     <th>Range</th>
                     <th>Normality</th>
                 </tr>
                 <tr>
-                    <td class = "param-name">{age.full_name} ({age.unit})</td>
-                    <td>{mean_sd_range(df, age)[0]}</td>
-                    <td>{mean_sd_range(df, age)[1]}</td>
-                    <td>{pval_shapiro(df, age)}</td>
+                    <td><span class = "p-name">{age.full_name}</span> <span class = "p-unit">({age.unit})</span></td>
+                    <td class = "value-td">{mean_sd_range(df, age)[0]}</td>
+                    <td class = "value-td">{mean_sd_range(df, age)[1]}</td>
+                    <td class = "value-td">{pval_shapiro(df, age)}</td>
                 </tr>
             </table><br>""",
         "img": "age_fig.png",
@@ -90,7 +90,7 @@ viz_data = {
                 The mean age in patients is <b>{mean_sd_range(df[df['cardio'] == "1"], age)[0]}</b> years old compared to
                 <b>{mean_sd_range(df[df['cardio'] == "0"], age)[0]}</b> years old in controls.
             </p>""",
-        "conclusion": f"""<ul>
+        "conclusion": f"""<ul class = "viz-cl">
                 <li>The mean age in the cohort was {mean_sd_range(df, age)[0]} yo.</li>
                 <li>Age range was {mean_sd_range(df, age)[1]} yo: no children and no elderly people were included</li>
                 <li>Patients in the cohort were older than controls, and the prevalence of CV disease linearly increased with age</li>
@@ -100,23 +100,23 @@ viz_data = {
     "sex" : {
         "title" : "Sex",
         "table" : f"""<table>
-            <tr>
+            <tr class = "head-tr">
                 <th>Parameter</th>
                 <th>Modalities</th>
-                <th>Observations (<i>n</i>)</th>
-                <th>Observations (%)</th>
+                <th>Observations (<span class = "obs">n</span>)</th>
+                <th>Observations (<span class = "obs">%</span>)</th>
             </tr>
             <tr>
-                <td rowspan = "2" class = "param-name">{sex.full_name}</td>
-                <td>{sex.mod[0]}</td>
-                <td>{df[sex.name].value_counts()[sex.mod[0]]}</td>
-                <td>{df[sex.name].value_counts(normalize = True)[sex.mod[0]]:.1%}</td>
+                <td rowspan = "2"><span class = "p-name">{sex.full_name}</span></td>
+                <td class = "modality-td">{sex.mod[0]}</td>
+                <td class = "value-td">{df[sex.name].value_counts()[sex.mod[0]]}</td>
+                <td class = "value-td">{df[sex.name].value_counts(normalize = True)[sex.mod[0]]:.1%}</td>
             </tr>
             </tr>
             <tr>
-                <td>{sex.mod[1]}</td>
-                <td>{df[sex.name].value_counts()[sex.mod[1]]}</td>
-                <td>{df[sex.name].value_counts(normalize = True)[sex.mod[1]]:.1%}</td>
+                <td class = "modality-td">{sex.mod[1]}</td>
+                <td class = "value-td">{df[sex.name].value_counts()[sex.mod[1]]}</td>
+                <td class = "value-td">{df[sex.name].value_counts(normalize = True)[sex.mod[1]]:.1%}</td>
             </tr>
         </table><br>""",
         "img" : "sex_fig.png",
@@ -139,7 +139,7 @@ viz_data = {
                 <b>{np.mean(df[df['sex'] == 'male']['age']):.1f} ± {np.std(df[df['sex'] == 'male']['age']):.1f}</b> years old in males. 
                 Moreover, prevalence of cardiovascular disease increased with age in both sex group was superimposable.
             </p>""",
-        "conclusion": f"""<ul>
+        "conclusion": f"""<ul class = "viz-cl">
                 <li>No obvious influence of sex was observed, as CV disease prevalence was very close to 50% in both groups</li>
                 <li>Prevalence of CV diseases increased with age in a comparable manner in both males and females</li>
                 <li>As there is almost twice as much females in the cohort, we may consider rebalancing the training data to a 1:1 sex
@@ -149,29 +149,29 @@ viz_data = {
     "bmi" : {
         "title" : "Body-Mass Index, Height and Weight",
         "table" : f"""<table>
-                <tr>
+                <tr class = "head-tr">
                     <th>Parameter</th>
                     <th>Mean ± SD</th>
                     <th>Range</th>
                     <th>Normality</th>
                 </tr>
                 <tr>
-                    <td class = "param-name">{bmi.full_name} ({bmi.unit})</td>
-                    <td>{mean_sd_range(df, bmi)[0]}</td>
-                    <td>{mean_sd_range(df, bmi)[1]}</td>
-                    <td>{pval_shapiro(df, bmi)}</td>
+                    <td><span class = "p-name">{bmi.full_name}</span> <span class = "p-unit">({bmi.unit})</span></td>
+                    <td class = "value-td">{mean_sd_range(df, bmi)[0]}</td>
+                    <td class = "value-td">{mean_sd_range(df, bmi)[1]}</td>
+                    <td class = "value-td">{pval_shapiro(df, bmi)}</td>
                 </tr>
                 <tr>
-                    <td class = "param-name">{weight.full_name} ({weight.unit})</td>
-                    <td>{mean_sd_range(df, weight)[0]}</td>
-                    <td>{mean_sd_range(df, weight)[1]}</td>
-                    <td>{pval_shapiro(df, weight)}</td>
+                    <td><span class = "p-name">{weight.full_name}</span> <span class = "p-unit">({weight.unit})</span></td>
+                    <td class = "value-td">{mean_sd_range(df, weight)[0]}</td>
+                    <td class = "value-td">{mean_sd_range(df, weight)[1]}</td>
+                    <td class = "value-td">{pval_shapiro(df, weight)}</td>
                 </tr>
                 <tr>
-                    <td class = "param-name">{height.full_name} ({height.unit})</td>
-                    <td>{mean_sd_range(df, height)[0]}</td>
-                    <td>{mean_sd_range(df, height)[1]}</td>
-                    <td>{pval_shapiro(df, height)}</td>
+                    <td><span class = "p-name">{height.full_name}</span> <span class = "p-unit">({height.unit})</span></td>
+                    <td class = "value-td">{mean_sd_range(df, height)[0]}</td>
+                    <td class = "value-td">{mean_sd_range(df, height)[1]}</td>
+                    <td class = "value-td">{pval_shapiro(df, height)}</td>
                 </tr>
             </table><br>""",
         "img": "bmi_height_weight_fig.png",
@@ -191,7 +191,7 @@ viz_data = {
             respective 95% confidence interval ([{h_lo} - {h_hi}] cm for height and [{w_lo} - {w_hi}] kg for weight). On extreme
             values subgroups, weight seemed to have a greater influence on CV disease than height.
             </p>""",
-        "conclusion": f"""<ul>
+        "conclusion": f"""<ul class = "viz-cl">
                 <li>Cardiovascular diseases prevalence increases with BMI</li>
                 <li>Distribution of bmi is right-skewed, with a max value of {np.max(df['bmi']):.1f} kg/m², but outlying
                 values may have a limited impact</li>
@@ -204,53 +204,53 @@ viz_data = {
     "bp": {
         "title" : "Blood Pressure",
         "table" : f"""<table>
-                <tr>
+                <tr class = "head-tr">
                     <th>Parameter</th>
                     <th>Mean ± SD</th>
                     <th>Range</th>
                     <th>Normality</th>
                 </tr>
                 <tr>
-                    <td class = "param-name">{ap_hi.full_name} ({ap_hi.unit})</td>
-                    <td>{mean_sd_range(df, ap_hi)[0]}</td>
-                    <td>{mean_sd_range(df, ap_hi)[1]}</td>
-                    <td>{pval_shapiro(df, ap_hi)}</td>
+                    <td><span class = "p-name">{ap_hi.full_name}</span> <span class = "p-unit">({ap_hi.unit})</span></td>
+                    <td class = "value-td">{mean_sd_range(df, ap_hi)[0]}</td>
+                    <td class = "value-td">{mean_sd_range(df, ap_hi)[1]}</td>
+                    <td class = "value-td">{pval_shapiro(df, ap_hi)}</td>
                 </tr>
                 <tr>
-                    <td class = "param-name">{ap_lo.full_name} ({ap_lo.unit})</td>
-                    <td>{mean_sd_range(df, ap_lo)[0]}</td>
-                    <td>{mean_sd_range(df, ap_lo)[1]}</td>
-                    <td>{pval_shapiro(df, ap_lo)}</td>
+                    <td><span class = "p-name">{ap_lo.full_name}</span> <span class = "p-unit">({ap_lo.unit})</span></td>
+                    <td class = "value-td">{mean_sd_range(df, ap_lo)[0]}</td>
+                    <td class = "value-td">{mean_sd_range(df, ap_lo)[1]}</td>
+                    <td class = "value-td">{pval_shapiro(df, ap_lo)}</td>
                 </tr>
             </table>
             <br>
             <table>
-            <tr>
+            <tr class = "head-tr">
                 <th>Parameter</th>
                 <th>Modalities</th>
-                <th>Observations (<i>n</i>)</th>
-                <th>Observations (%)</th>
+                <th>Observations (<span class = "obs">n</span>)</th>
+                <th>Observations (<span class = "obs">%</span>)</th>
             </tr>
             <tr>
-                <td rowspan = "4" class = "param-name">{ap_aha.full_name}</td>
-                <td>{ap_aha.mod_names[0]}</td>
-                <td>{df[ap_aha.name].value_counts()[ap_aha.mod[0]]}</td>
-                <td>{df[ap_aha.name].value_counts(normalize = True)[ap_aha.mod[0]]:.1%}</td>
+                <td rowspan = "4"><span class = "p-name">{ap_aha.full_name}</span></td>
+                <td class = "modality-td">{ap_aha.mod_names[0]}</td>
+                <td class = "value-td">{df[ap_aha.name].value_counts()[ap_aha.mod[0]]}</td>
+                <td class = "value-td">{df[ap_aha.name].value_counts(normalize = True)[ap_aha.mod[0]]:.1%}</td>
             </tr>
             <tr>
-                <td>{ap_aha.mod_names[1]}</td>
-                <td>{df[ap_aha.name].value_counts()[ap_aha.mod[1]]}</td>
-                <td>{df[ap_aha.name].value_counts(normalize = True)[ap_aha.mod[1]]:.1%}</td> 
+                <td class = "modality-td">{ap_aha.mod_names[1]}</td>
+                <td class = "value-td">{df[ap_aha.name].value_counts()[ap_aha.mod[1]]}</td>
+                <td class = "value-td">{df[ap_aha.name].value_counts(normalize = True)[ap_aha.mod[1]]:.1%}</td> 
             </tr>
             <tr>
-                <td>{ap_aha.mod_names[2]}</td>
-                <td>{df[ap_aha.name].value_counts()[ap_aha.mod[2]]}</td>
-                <td>{df[ap_aha.name].value_counts(normalize = True)[ap_aha.mod[2]]:.1%}</td>
+                <td class = "modality-td">{ap_aha.mod_names[2]}</td>
+                <td class = "value-td">{df[ap_aha.name].value_counts()[ap_aha.mod[2]]}</td>
+                <td class = "value-td">{df[ap_aha.name].value_counts(normalize = True)[ap_aha.mod[2]]:.1%}</td>
             </tr>
             <tr>
-                <td>{ap_aha.mod_names[3]}</td>
-                <td>{df[ap_aha.name].value_counts()[ap_aha.mod[3]]}</td>
-                <td>{df[ap_aha.name].value_counts(normalize = True)[ap_aha.mod[3]]:.1%}</td>
+                <td class = "modality-td">{ap_aha.mod_names[3]}</td>
+                <td class = "value-td">{df[ap_aha.name].value_counts()[ap_aha.mod[3]]}</td>
+                <td class = "value-td">{df[ap_aha.name].value_counts(normalize = True)[ap_aha.mod[3]]:.1%}</td>
             </tr>
         </table><br>""",
         "img" : "bp_fig.png",
@@ -275,7 +275,7 @@ viz_data = {
             remained consistent in patients. Additionnaly, the mean blood pressure value was not affected by age in patients,
             whereas it increased with age in controls.
             </p>""",
-        "conclusion" : f"""<ul>
+        "conclusion" : f"""<ul class = "viz-cl">
             <li>Only {df['ap_aha'].value_counts(normalize=True)['1']:.1%} of subjects had blood pressure classified as "Normal"</li>
             <li>Males displayed higher blood pressure values than females, regardless of cardiovascular status</li>
             <li>Blood pressure increased with age among controls, but remained almost constant in patients</li>
@@ -286,48 +286,48 @@ viz_data = {
     "gluc-chol" : {
         "title" : "Glucose and Cholesterol",
         "table" : f"""<table>
-            <tr>
+            <tr class = "head-tr">
                 <th>Parameter</th>
                 <th>Modalities</th>
-                <th>Observations (<i>n</i>)</th>
-                <th>Observations (%)</th>
+                <th>Observations (<span class = "obs">n</span>)</th>
+                <th>Observations (<span class = "obs">%</span>)</th>
             </tr>
             <tr>
-                <td rowspan = "3" class = "param-name">{cholesterol.full_name}</td>
-                <td>{cholesterol.mod_names[0]}</td>
-                <td>{df[cholesterol.name].value_counts()[cholesterol.mod[0]]}</td>
-                <td>{df[cholesterol.name].value_counts(normalize = True)[cholesterol.mod[0]]:.1%}</td>
+                <td rowspan = "3"><span class = "p-name">{cholesterol.full_name}</span></td>
+                <td class = "modality-td">{cholesterol.mod_names[0]}</td>
+                <td class = "value-td">{df[cholesterol.name].value_counts()[cholesterol.mod[0]]}</td>
+                <td class = "value-td">{df[cholesterol.name].value_counts(normalize = True)[cholesterol.mod[0]]:.1%}</td>
             </tr>
             </tr>
             <tr>
-                <td>{cholesterol.mod_names[1]}</td>
-                <td>{df[cholesterol.name].value_counts()[cholesterol.mod[1]]}</td>
-                <td>{df[cholesterol.name].value_counts(normalize = True)[cholesterol.mod[1]]:.1%}</td>
+                <td class = "modality-td">{cholesterol.mod_names[1]}</td>
+                <td class = "value-td">{df[cholesterol.name].value_counts()[cholesterol.mod[1]]}</td>
+                <td class = "value-td">{df[cholesterol.name].value_counts(normalize = True)[cholesterol.mod[1]]:.1%}</td>
             </tr>   
             </tr>
             <tr>
-                <td>{cholesterol.mod_names[2]}</td>
-                <td>{df[cholesterol.name].value_counts()[cholesterol.mod[2]]}</td>
-                <td>{df[cholesterol.name].value_counts(normalize = True)[cholesterol.mod[2]]:.1%}</td>
+                <td class = "modality-td">{cholesterol.mod_names[2]}</td>
+                <td class = "value-td">{df[cholesterol.name].value_counts()[cholesterol.mod[2]]}</td>
+                <td class = "value-td">{df[cholesterol.name].value_counts(normalize = True)[cholesterol.mod[2]]:.1%}</td>
             </tr>
             </tr>
             <tr>
-                <td rowspan = "3" class = "param-name">{gluc.full_name}</td>
-                <td>{gluc.mod_names[0]}</td>
-                <td>{df[gluc.name].value_counts()[gluc.mod[0]]}</td>
-                <td>{df[gluc.name].value_counts(normalize = True)[gluc.mod[0]]:.1%}</td>
+                <td rowspan = "3"<span class = "p-name">{gluc.full_name}</span></td>
+                <td class = "modality-td">{gluc.mod_names[0]}</td>
+                <td class = "value-td">{df[gluc.name].value_counts()[gluc.mod[0]]}</td>
+                <td class = "value-td">{df[gluc.name].value_counts(normalize = True)[gluc.mod[0]]:.1%}</td>
             </tr>
             </tr>
             <tr>
-                <td>{gluc.mod_names[1]}</td>
-                <td>{df[gluc.name].value_counts()[gluc.mod[1]]}</td>
-                <td>{df[gluc.name].value_counts(normalize = True)[gluc.mod[1]]:.1%}</td>
+                <td class = "modality-td">{gluc.mod_names[1]}</td>
+                <td class = "value-td">{df[gluc.name].value_counts()[gluc.mod[1]]}</td>
+                <td class = "value-td">{df[gluc.name].value_counts(normalize = True)[gluc.mod[1]]:.1%}</td>
             </tr>   
             </tr>
             <tr>
-                <td>{gluc.mod_names[2]}</td>
-                <td>{df[gluc.name].value_counts()[gluc.mod[2]]}</td>
-                <td>{df[gluc.name].value_counts(normalize = True)[gluc.mod[2]]:.1%}</td>
+                <td class = "modality-td">{gluc.mod_names[2]}</td>
+                <td class = "value-td">{df[gluc.name].value_counts()[gluc.mod[2]]}</td>
+                <td class = "value-td">{df[gluc.name].value_counts(normalize = True)[gluc.mod[2]]:.1%}</td>
             </tr>
         </table><br>""",
     "img" : "gluc_chol_fig.png",
@@ -355,7 +355,7 @@ viz_data = {
                 with cardiovascular disease status ({pval_chi2_gluc} for glucose and {pval_chi2_chol} for cholesterol),
                 the feature <b>gluc</b> may bring limited information due to the influence of <b>cholesterol</b>.
             </p>""",
-        "conclusion" : f"""<ul>
+        "conclusion" : f"""<ul class = "viz-cl">
                 <li>Majority of subjects had normal values for both glucose and cholesterol ({tab_gc.loc["1", "1"]:.1%})</li>
                 <li>Prevalence of cardiovascular diseases increased with glucose and cholesterol</li>
                 <li>Modalities "Above normal" and "Well above normal" could be merged for gluc</li>
@@ -368,48 +368,49 @@ viz_data = {
     "lifestyle" : {
         "title" : "Lifestyle",
         "table" : f"""<table>
-            <tr>
+            <tr class = "head-tr">
                 <th>Parameter</th>
                 <th>Modalities</th>
-                <th>Observations (<i>n</i>)</th>
-                <th>Observations (%)</th>
+                <th>Observations (<span class = "obs">n</span>)</th>
+                <th>Observations (<span class = "obs">%</span>)</th>
             </tr>
             <tr>
-                <td rowspan = "2" class = "param-name">{smoke.full_name}</td>
-                <td>{smoke.mod_names[0]}</td>
-                <td>{df[smoke.name].value_counts()[smoke.mod[0]]}</td>
-                <td>{df[smoke.name].value_counts(normalize = True)[smoke.mod[0]]:.1%}</td>
+                <td rowspan = "2"><span class = "p-name">{smoke.full_name}</span></td>
+                <td class = "modality-td">{smoke.mod_names[0]}</td>
+                <td class = "value-td">{df[smoke.name].value_counts()[smoke.mod[0]]}</td>
+                <td class = "value-td">{df[smoke.name].value_counts(normalize = True)[smoke.mod[0]]:.1%}</td>
             </tr>
             <tr>
-                <td>{smoke.mod_names[1]}</td>
-                <td>{df[smoke.name].value_counts()[smoke.mod[1]]}</td>
-                <td>{df[smoke.name].value_counts(normalize = True)[smoke.mod[1]]:.1%}</td>
+                <td class = "modality-td">{smoke.mod_names[1]}</td>
+                <td class = "value-td">{df[smoke.name].value_counts()[smoke.mod[1]]}</td>
+                <td class = "value-td">{df[smoke.name].value_counts(normalize = True)[smoke.mod[1]]:.1%}</td>
             </tr>   
             <tr>
-                <td rowspan = "2" class = "param-name">{alco.full_name}</td>
-                <td>{alco.mod_names[0]}</td>
-                <td>{df[alco.name].value_counts()[alco.mod[0]]}</td>
-                <td>{df[alco.name].value_counts(normalize = True)[alco.mod[0]]:.1%}</td>
+                <td rowspan = "2"><span class = "p-name">{alco.full_name}</span></td>
+                <td class = "modality-td">{alco.mod_names[0]}</td>
+                <td class = "value-td">{df[alco.name].value_counts()[alco.mod[0]]}</td>
+                <td class = "value-td">{df[alco.name].value_counts(normalize = True)[alco.mod[0]]:.1%}</td>
             </tr>
             <tr style = 'border-top: 1px solid black'>
-                <td>{alco.mod_names[1]}</td>
-                <td>{df[alco.name].value_counts()[alco.mod[1]]}</td>
-                <td>{df[alco.name].value_counts(normalize = True)[alco.mod[1]]:.1%}</td>
+                <td class = "modality-td">{alco.mod_names[1]}</td>
+                <td class = "value-td">{df[alco.name].value_counts()[alco.mod[1]]}</td>
+                <td class = "value-td">{df[alco.name].value_counts(normalize = True)[alco.mod[1]]:.1%}</td>
             </tr> 
             <tr>
-                <td rowspan = "2" class = "param-name">{active.full_name}</td>
-                <td>{active.mod_names[0]}</td>
-                <td>{df[active.name].value_counts()[active.mod[0]]}</td>
-                <td>{df[active.name].value_counts(normalize = True)[active.mod[0]]:.1%}</td>
+                <td rowspan = "2"><span class = "p-name">{active.full_name}</span></td>
+                <td class = "modality-td">{active.mod_names[0]}</td>
+                <td class = "value-td">{df[active.name].value_counts()[active.mod[0]]}</td>
+                <td class = "value-td">{df[active.name].value_counts(normalize = True)[active.mod[0]]:.1%}</td>
             </tr>
             <tr>
-                <td>{active.mod_names[1]}</td>
-                <td>{df[active.name].value_counts()[active.mod[1]]}</td>
-                <td>{df[active.name].value_counts(normalize = True)[active.mod[1]]:.1%}</td>
+                <td class = "modality-td">{active.mod_names[1]}</td>
+                <td class = "value-td">{df[active.name].value_counts()[active.mod[1]]}</td>
+                <td class = "value-td">{df[active.name].value_counts(normalize = True)[active.mod[1]]:.1%}</td>
             </tr> 
         </table><br>""",
         "img" : "lifestyle_fig.png",
-        "analysis": f"""            <p>
+        "analysis": f"""
+            <p>
                 A minority of subjects reported smoking (<b>{df['smoke'].value_counts(normalize = True)["1"]:.1%}</b>) or alcohol consumption
                 (<b>{df['alco'].value_counts(normalize = True)["1"]:.1%}</b>), whereas they were <b>{df['active'].value_counts(normalize = True)["1"]:.1%}</b>
                 to report some physical activity. This cohort therefore displayed overall healthy lifestyle, as 
@@ -429,7 +430,7 @@ viz_data = {
                 alcohol, compared to <b>{df_sex_ls[(df_sex_ls['sex'] == 'female') & (df_sex_ls['parameter'] == "smoke_1")]['percentage'].values[0]:.1f}%</b>
                 and <b>{df_sex_ls[(df_sex_ls['sex'] == 'female') & (df_sex_ls['parameter'] == "alco_1")]['percentage'].values[0]:.1f}%</b> respectively for females.
             </p>""",
-        "conclusion" : f"""<ul>
+        "conclusion" : f"""<ul class = "viz-cl">
                 <li>A small number of subjects reported smoking and or drinking alcohol, and these variables did not 
                 display any obvious correlation with cardio</li>
                 <li>Smoking or exercising did not influence blood pressure levels</li>

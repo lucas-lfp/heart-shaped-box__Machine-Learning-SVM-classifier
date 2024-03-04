@@ -63,6 +63,7 @@ a.feat-select, a:link.feat-select, a:visited.feat-select {
     color: dimgray;
     text-decoration: none;
     font-weight: 400;
+    padding: 0 8px;
 }
 
 
@@ -120,9 +121,63 @@ div {
 table {
     border: 1px solid black;
     width: 85%;
+    margin: 0 auto;
 }
 
 th, td {
     border: 1px solid black;
     text-align: center;
+}
+
+th {
+    font-variant: small-caps;
+    font-weight: 500;
+    background-color: honeydew;
+}
+
+.p-name {
+    font-weight: 500;
+}
+
+.p-unit {
+    font-size: small;
+    font-style: italic;
+}
+
+.modality-td {
+    font-style: italic;
+}
+
+.value-td, .modality-td {
+    font-size:90%;
+    line-height: 200%;
+}
+
+.obs {
+    font-style: italic;
+    font-variant: normal;
+    font-size: 80%;
+}
+
+.head-tr {
+    line-height: 250%;
+    font-size: 120%;
+}
+
+.back-to-top {
+    border: 1px solid dimgray;
+    border-radius: 10px;
+    background-color: dimgray;
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.viz-cl {
+    margin-bottom: 30px;
+    padding-left: 30px;
+    border-left: 10px solid darkgreen;
+    list-style-type:square;
+
 }

@@ -44,7 +44,6 @@ def pval_txt(pval):
 
 
 def mean_sd_range(df, var):
-    print(df.columns)
     return (f"{np.mean(df[var.name]):.1f} ± {np.std(df[var.name]):.1f}", f"[{np.min(df[var.name]):.1f} - {np.max(df[var.name]):.1f}]")
 
 
