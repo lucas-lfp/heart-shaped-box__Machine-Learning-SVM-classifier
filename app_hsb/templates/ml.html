@@ -8,54 +8,44 @@
     on data from more than 65000 subjects either with or without cardiovascular
     disease. Enter your data below to find out. 
     </p>
-    <form action="{{ url_for('ml') }}" method="post">
-        <label for = "input_age">Age (yrs):</label>
-        <input type = "number" id = "input_age" name = "input_age" min = "18" max = "65" step = "1" value = "50">
-        <br>
-        <label for = "input_weight">Weight (kg):</label>
-        <input type = "number" id = "input_weight" name = "input_weight" value = "80">
-        <br>
-        <label for = "input_height">Height (cm):</label>
-        <input type = "number" id = "input_height" name = "input_height" value = "170">
-        <br>
-        <label for = "input_sbp">Systolic Blood Pressure (mmHg):</label>
-        <input type = "number" id = "input_sbp" name = "input_sbp" value = "13">
-        <br>
-        <label for = "input_dbp">Diastolic Blood Pressure (mmHg):</label>
-        <input type = "number" id = "input_dbp" name = "input_dbp" value = "9">
-        <br>
-        <p>Cholesterol level:</p>
-  
-        <input type="radio" id="chol_1" name="input_cholesterol" value=1>
-        <label for="chol_1">Normal (< 2g/L)</label><br>
-        
-        <input type="radio" id="chol_2" name="input_cholesterol" value=2>
-        
-        <label for="chol_2">Above normal (2 - 2.39 g/L)</label><br>
-        
-        <input type="radio" id="chol_3" name="input_cholesterol" value=3>
-        <label for="chol_3">Well above normal (> 2.40 g/L)</label><br>
+    <form method="POST">
+        {{ user_form.hidden_tag() }}
 
-        <p>Glucose level:</p>
-  
-        <input type="radio" id="gluc_1" name="input_gluc" value=1>
-        <label for="gluc_1">Normal (0.70 - 0.99 g/L or 3.9 - 5.5 mmol/L)</label><br>
-        
-        <input type="radio" id="gluc_2" name="input_gluc" value=2>
-        <label for="gluc_2">Above normal (1.0 - 1.25 g/L or 5.6 - 6.9 mmol/L)</label><br>
-        
-        <input type="radio" id="gluc_3" name="input_gluc" value=3>
-        <label for="gluc_3">Well above normal (> 1.26 g/L or > 7.0 mmol/L)</label><br>
-        
-        
-        
-        
-        
-        <input type="submit" value="Predict">
+        {{ user_form.age_input.label }}
+        {{ user_form.age_input() }}
+        <br>
+        {{ user_form.weight_input.label }}
+        {{ user_form.weight_input() }}
+        <br>
+        {{ user_form.height_input.label }}
+        {{ user_form.height_input() }}
+        <br>
+        {{ user_form.aphi_input.label }}
+        {{ user_form.aphi_input() }}
+        <br>
+        {{ user_form.aplo_input.label }}
+        {{ user_form.aplo_input() }}
+        <br>
+        {{ user_form.cholesterol_input.label }}
+        {{ user_form.cholesterol_input(style="list-style:none") }}
+
+        {{ user_form.gluc_input.label }}
+        {{ user_form.gluc_input(style="list-style:none") }}
+        <br>
+
+
+        {{ user_form.submit() }}
+        <button type="reset" class="reset-btn">Reset</button>
     </form>
 {% if message %}
     <p>{{ message }}</p>
 {% endif %}
+</div>
+<div>
+    <p>
+        category iiis:
+        {{ test_result }}
+    </p>
 </div>
 
 
