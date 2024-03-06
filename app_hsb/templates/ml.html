@@ -10,41 +10,45 @@
     </p>
     <form method="POST">
         {{ user_form.hidden_tag() }}
-
+        
+        <p class = "input-category">
+            Demographic status
+        </p>
+        <p class = "input-field">
         {{ user_form.age_input.label }}
         {{ user_form.age_input() }}
+        <span class = "warning-msg">{{ warning_age }}</span>
         <br>
         {{ user_form.weight_input.label }}
         {{ user_form.weight_input() }}
         <br>
         {{ user_form.height_input.label }}
         {{ user_form.height_input() }}
-        <br>
+        <span class = "warning-msg">{{ warning_height }}</span>
+        </p>
+        <p class = "input-category">Blood Pressure</p>
+        <p class = "input-field">
         {{ user_form.aphi_input.label }}
         {{ user_form.aphi_input() }}
         <br>
         {{ user_form.aplo_input.label }}
         {{ user_form.aplo_input() }}
-        <br>
-        {{ user_form.cholesterol_input.label }}
+        <span class = "warning-msg">{{ warning_bp }}</span>
+        </p>
+        <p class = "input-category">Cholesterol</p>
+        <ul class = "input-field">
         {{ user_form.cholesterol_input(style="list-style:none") }}
-
-        {{ user_form.gluc_input.label }}
+        </ul>
+        <p class = "input-category">Glucose</p>
+        <ul class = "input-field">
         {{ user_form.gluc_input(style="list-style:none") }}
-        <br>
-
-
+        </ul>
         {{ user_form.submit() }}
-        <button type="reset" class="reset-btn">Reset</button>
     </form>
-{% if message %}
-    <p>{{ message }}</p>
-{% endif %}
 </div>
 <div>
     <p>
-        category iiis:
-        {{ test_result }}
+        {{ test_result|safe }}
     </p>
 </div>
 
