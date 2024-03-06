@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div>
-    <h1>Cardiovascular Disease Prediction</h1>
+<div id="ml-head-div">
+    <h1>Evaluate your risk</h1>
     <p>
     Are you at risk of a cardiovascular disease ? This model was trained
     on data from more than 65000 subjects either with or without cardiovascular
     disease. Enter your data below to find out. 
     </p>
+</div>
+<div>
     <form method="POST">
         {{ user_form.hidden_tag() }}
         

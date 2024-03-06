@@ -1,32 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div>
-    <p>
-    <i>Bonjour</i> ! And thank you for the visit. My name is Lucas. I'm a pharmacist,
-    with a Ph.D. in Pharmacology, and a data scientist.
-    </p>
-    <p>
-    I've got a strong background in life science, especially in clinical research. I started playing with
-    data during my Ph.D., and quickly got hooked. It didn't take me long to realize that
-    the tools I used were very... Limited.
-    </p>
-    <p>
-    But the good news is, I kinda was looking for a good reason to get into programming, and ... <i>voilà</i> !
-    </p>
+    <div class="about-div">
+        <p id="about-p1">
+            <span style = "font-weight: 500;"><i>Bonjour</i> ! And thank you for the visit.</span><br>My name is Lucas. I'm a pharmacist,
+            with a Ph.D. in Pharmacology, and a data scientist.
+        </p>
+        <p class="about-p2">
+            I've got a strong background in life science, especially in clinical research. I started playing with
+            data during my Ph.D., and quickly got hooked. It didn't take me long to realize that
+            the tools I used were very... Limited.
+        </p>
+        <p class= "about-p2">
+            But the good news is, I kinda was looking for a good reason to get into programming, and ... <i>voilà</i> !
+        </p>
     </div>
-    <div>
-    If you wish to know more about my previous experiences, or other projects
-    i worked on, reach me on LinkedIn or GitHub.
+    <div class="about-div">
+        <p class="about-p2">
+            If you wish to know more about my previous experiences, or other projects
+    i worked on, reach me on LinkedIn or GitHub. You may also reach me at <i>foulongeo@gmail.com</i>
+        </p>    
     </div>
-    <div>
-    <a href='https://www.linkedin.com/in/lucasfoulonpinto/'>
-    <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/2048px-LinkedIn_icon.svg.png' width='40px'></a>
-    <a href='https://github.com/lucas-lfp'>
-    <img src='https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png' width='50px'></a>
-    </div>
-    <div>
-    You may also reach me at <i>foulongeo@gmail.com</i>
+    <div id="about-links">
+        <div id="about-linkedin">
+            <a href='https://www.linkedin.com/in/lucasfoulonpinto/'>
+            <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/2048px-LinkedIn_icon.svg.png' width='40px'></a>
+        </div>
+        <div id="about-github">
+            <a href='https://github.com/lucas-lfp'>
+            <img src='https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png' width='50px'></a>
+        </div>
     </div>
 
 {% endblock %}

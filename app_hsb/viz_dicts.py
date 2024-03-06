@@ -74,31 +74,28 @@ viz_data = {
                 </tr>
             </table><br>""",
         "img": "age_fig.png",
-        "analysis": f"""<p>
-                The minimal age value found
-                in the original dataset was <b>{np.min(df_raw['age'])/365.25:.1f}</b> years old. In this cohort, {len(df_raw[df_raw['age']/365.25 < 32])}
-                individuals were below 32 years old, and there was no subject in the age group [32 - 38] years old. None 
-                of the subjects below 32 years old had cardiovascular disease, and they were considered outliers due to the existing age gap. It was decided to
-                take them out of the analysis.
-                </p>
-                <p>
-                Consequently, the range for <b>{age.name}</b> is
-                <b>[{np.min(df[age.name]):.0f} - {np.max(df[age.name]):.0f}]</b> years old.
-                The max age value is surprisingly low as cardiovascular diseases are common among older individuals,
-                the reason why no data from elderly patients were recorded is not known, but probably was a protocol requirement.
-            </p>
-            <p>
-                The prevalence of CV diseases is known to increase with age, as it is the case in this cohort. The proportion of
-                patients in the age group [51 - 55] is <b>around 50%</b>. It is below 50% in younger individuals and above in older individuals.
-                The mean age in patients is <b>{mean_sd_range(df[df['cardio'] == "1"], age)[0]}</b> years old compared to
-                <b>{mean_sd_range(df[df['cardio'] == "0"], age)[0]}</b> years old in controls.
-            </p>""",
-        "conclusion": f"""<ul class = "viz-cl">
-                <li>The mean age in the cohort was {mean_sd_range(df, age)[0]} yo.</li>
-                <li>Age range was {mean_sd_range(df, age)[1]} yo: no children and no elderly people were included</li>
-                <li>Patients in the cohort were older than controls, and the prevalence of CV disease linearly increased with age</li>
-                <li>It could be worth adjusting the model on age, <i>ie</i> separating the data in two distinct dataframes with a cut-off value for age nearby 50 yo.</li>
-            </ul>""",
+        "analysis": f"""
+        <p class="analysis-p">
+            The dataset revealed a minimum age of {np.min(df_raw['age']) / 365.25:.1f} years, and the {len(df_raw[df_raw['age'] / 365.25 < 32])}
+            individuals under 32 years were identified as outliers. There were no recorded cases of cardiovascular disease among the [32 - 38] years range.
+            Given the significant age gap, these outliers were excluded from further analysis.
+        </p>
+        <p class="analysis-p">
+            The adjusted age range for analysis spans from {np.min(df[age.name]):.0f} to {np.max(df[age.name]):.0f} years.
+            The observed maximum age is notably lower than expected, considering cardiovascular diseases predominantly affect the elderly. 
+            The reason for this absence of data from older individuals remains unclear but may stem from specific study protocol criteria.
+        </p>
+        <p class="analysis-p">
+            As anticipated, the prevalence of cardiovascular (CV) diseases escalates with age within this cohort. Approximately 50% of patients aged [51 - 55] years exhibit CV diseases. 
+            This prevalence dips below 50% among younger participants and increases for older age groups. The average age among patients diagnosed with CV diseases 
+            is {mean_sd_range(df[df['cardio'] == "1"], age)[0]} years, in contrast to {mean_sd_range(df[df['cardio'] == "0"], age)[0]} years in the control group.
+        </p>""",
+        "conclusion": f"""<ul class="viz-cl">
+            <li>The average age within the cohort was {mean_sd_range(df, age)[0]} years old.</li>
+            <li>The age range was {mean_sd_range(df, age)[1]} years old, explicitly excluding children and the elderly from the study.</li>
+            <li>Comparatively, patients were older than control subjects, with a clear linear increase in cardiovascular disease prevalence with advancing age.</li>
+            <li>Consideration for age adjustment in the model might be beneficial, <i>e.g.</i>, dividing the dataset into two distinct groups using an age cut-off around 50 years old could provide deeper insights.</li>
+        </ul>""",
     },
     "sex" : {
         "title" : "Sex",
@@ -123,31 +120,26 @@ viz_data = {
             </tr>
         </table><br>""",
         "img" : "sex_fig.png",
-        "analysis" : f"""<p>
-                <b>sex</b> showed an important degree of imbalance, with roughly <b><sup>2</sup>/<sub>3</sub>
-                of women</b> and <sup>1</sup>/<sub>3</sub> of men. The reasons
-                for such an imbalance remain unclear in this age group, as it is closer to the expected sex ratio in a geriatric cohort.
-            </p>
-            <p>
-                The distribution of cardiovascular disease among men and women is visually balanced, with a prevalence of
-                <b>{df[df['sex'] == 'female']['cardio'].value_counts(normalize = True)["1"]:.1%}</b> among women and of
-                <b>{df[df['sex'] == 'male']['cardio'].value_counts(normalize = True)["1"]:.1%}</b> among men. CV disease was not
-                linked to sex according to chi² contingency test ({chi2_cardio(df, sex)}). Nevertheless, it should be kept in mind that having
-                comparable proportion of Controls and Patients in each sex group might have been a protocol criteria, in which
-                case this observation would be biased.
-            </p>
-            <p>
-                Age distribution was comparable in both sex groups, with female having a mean age of <b>{np.mean(df[df['sex'] == 'female']['age']):.1f} ±
-                {np.std(df[df['sex'] == 'female']['age']):.1f}</b> years old <i>vs.</i> 
-                <b>{np.mean(df[df['sex'] == 'male']['age']):.1f} ± {np.std(df[df['sex'] == 'male']['age']):.1f}</b> years old in males. 
-                Moreover, prevalence of cardiovascular disease increased with age in both sex group was superimposable.
-            </p>""",
-        "conclusion": f"""<ul class = "viz-cl">
-                <li>No obvious influence of sex was observed, as CV disease prevalence was very close to 50% in both groups</li>
-                <li>Prevalence of CV diseases increased with age in a comparable manner in both males and females</li>
-                <li>As there is almost twice as much females in the cohort, we may consider rebalancing the training data to a 1:1 sex
-                ratio or train distinct models for males and females</li>
-            </ul>"""
+        "analysis" : f"""
+        <p class="analysis-p">
+            The cohort exhibited a significant sex imbalance, with approximately <sup>2</sup>/<sub>3</sub> being women and <sup>1</sup>/<sub>3</sub> men. 
+            This disparity is notable within this age group and deviates from the expected sex ratio observed in geriatric populations.
+        </p>
+        <p class="analysis-p">
+            Despite the imbalance, the distribution of cardiovascular disease (CV) between men and women appears proportionate, showing a prevalence of 
+            {df[df['sex'] == 'female']['cardio'].value_counts(normalize=True)["1"]:.1%} in women and 
+            {df[df['sex'] == 'male']['cardio'].value_counts(normalize=True)["1"]:.1%} in men. No significant link between sex and CV disease was identified according to chi² contingency tests ({chi2_cardio(df, sex)}). However, it's essential to consider that the similar proportions of Controls and Patients in each sex group might have been a study design criterion, potentially introducing bias into this observation.
+        </p>
+        <p class="analysis-p">
+            Age distribution across genders was notably consistent, with females presenting a mean age of {np.mean(df[df['sex'] == 'female']['age'])/365.25:.1f} ± 
+            {np.std(df[df['sex'] == 'female']['age'])/365.25:.1f} years, compared to males, who had a mean age of {np.mean(df[df['sex'] == 'male']['age'])/365.25:.1f} ± {np.std(df[df['sex'] == 'male']['age'])/365.25:.1f} years. Furthermore, the increase in CV disease prevalence with age was paralleled between the sexes.
+        </p>""",
+    "conclusion": f"""
+        <ul class="viz-cl">
+            <li>The influence of sex on cardiovascular disease prevalence seems negligible, with prevalence rates in both sex groups approximating 50%.</li>
+            <li>Age-related increase in CV disease prevalence is consistent between males and females, indicating that age is a significant factor for CV disease risk irrespective of sex.</li>
+            <li>Considering the disproportionate female-to-male ratio of nearly 2:1 in the study population, recalibrating the dataset for an equal sex distribution or creating gender-specific models could potentially refine predictive accuracy.</li>
+        </ul>"""
     },
     "bmi" : {
         "title" : "Body-Mass Index, Height and Weight",
@@ -178,31 +170,37 @@ viz_data = {
                 </tr>
             </table><br>""",
         "img": "bmi_height_weight_fig.png",
-        "analysis": f"""<p>
-                A wide range of values was covered by both height ({mean_sd_range(df, height)[1]} cm) and weight
-            ({mean_sd_range(df, weight)[1]} kg). Consequently, range for bmi was <b>{mean_sd_range(df, bmi)[1]}</b> kg/m².
-            The median values for bmi was <b>{np.median(df['bmi']):.1f}</b> kg/m². Men were taller than women, 
-            but the distribution of BMI was comparable in both groups.
-            </p>
-            <p>
-                Data suggest that the <b>prevalence of cardiovascular diseases increases
-            with BMI</b>. Regarding weight and height, extreme values showed great variability; for both high and low values of height 
-            and high values only for weight.
-            </p>
-            <p>
-                The prevalence of cardiovascular disease was around <b>50%</b> among subjects with both height and weight within their
-            respective 95% confidence interval ([{h_lo} - {h_hi}] cm for height and [{w_lo} - {w_hi}] kg for weight). On extreme
-            values subgroups, weight seemed to have a greater influence on CV disease than height.
-            </p>""",
-        "conclusion": f"""<ul class = "viz-cl">
-                <li>Cardiovascular diseases prevalence increases with BMI</li>
-                <li>Distribution of bmi is right-skewed, with a max value of {np.max(df['bmi']):.1f} kg/m², but outlying
-                values may have a limited impact</li>
-                <li>Among subjects with outlying values for height and/or weight, weight seemed to have
-                a greater influence than height</li>
-                <li>It may be relevant to assess the influence of extreme values for height and weight on the 
-                model</li>
-            </ul>"""
+        "analysis": f"""
+        <p class="analysis-p">
+            The dataset spans a broad spectrum of physical measurements, with heights 
+            ranging from {mean_sd_range(df, height)[1]} cm and weights 
+            from {mean_sd_range(df, weight)[1]} kg. This diversity yields a
+            Body Mass Index (BMI) range of {mean_sd_range(df, bmi)[1]} kg/m², 
+            centering around a median BMI of {np.median(df['bmi']):.1f} kg/m². 
+            Notably, while men averaged taller than women, BMI distribution remained 
+            consistent across sexes.
+        </p>
+        <p class="analysis-p">
+            Analysis indicates a clear correlation: the prevalence of cardiovascular 
+            diseases escalates with increasing BMI. Extreme weight and height measurements
+            demonstrated significant variability, particularly pronounced at higher 
+            weight ranges.
+        </p>
+        <p class="analysis-p">
+            Cardiovascular disease affected approximately 50% of individuals whose 
+            height and weight fell within their respective 95% confidence 
+            intervals ([{h_lo} - {h_hi}] cm for height 
+            and [{w_lo} - {w_hi}] kg for weight). Among those with extreme 
+            measurements, weight appeared to exert a more pronounced impact on 
+            cardiovascular disease risk than height.
+        </p>""",
+    "conclusion": f"""
+        <ul class="viz-cl">
+            <li>The prevalence of cardiovascular diseases increases with BMI.</li>
+            <li>The BMI distribution in this cohort skews right, peaking at {np.max(df['bmi']):.1f} kg/m². However, the influence of outliers appears minimal.</li>
+            <li>In cases involving outlier values for height and weight, the latter demonstrates a more pronounced impact on cardiovascular risk.</li>
+            <li>Evaluating the effect of extreme height and weight measurements on the model's performance could provide valuable insights.</li>
+        </ul>"""
     },
     "bp": {
         "title" : "Blood Pressure",
@@ -257,33 +255,39 @@ viz_data = {
             </tr>
         </table><br>""",
         "img" : "bp_fig.png",
-        "analysis" : f"""<p>Both systolic and diastolic blood pressure displayed <b>substantial variability</b>, with wide range covered; and
-            strongly correlated one with the other ({pval_txt(spearmanr(df['ap_hi'], df['ap_lo'])[1])}). With both systolic and
-            diastolic blood pressure, <b>higher values were measured among patients with cardiovascular disease</b>
-            ({pval_txt(mwu_cardio(df, ap_hi))} for systolic,  {pval_txt(mwu_cardio(df, ap_lo))} for diastolic 
-            and {pval_txt(mwu_cardio(df, ap_m))} for mean blood pressure). 
-            Such observations were expected as high blood pressure is known to be a risk factor
-            for cardiovascular diseases.
+        "analysis" : f"""
+            <p class="analysis-p">
+                Both systolic and diastolic blood pressures exhibited substantial v
+                ariability and were found to be closely correlated 
+                ({pval_txt(spearmanr(df['ap_hi'], df['ap_lo'])[1])}). Notably, higher blood
+                pressure values were observed in patients diagnosed with cardiovascular 
+                disease-evident in systolic ({pval_txt(mwu_cardio(df, ap_hi))}),
+                diastolic ({pval_txt(mwu_cardio(df, ap_lo))}), and mean blood pressures 
+                ({pval_txt(mwu_cardio(df, ap_m))}). This aligns with the established 
+                understanding that hypertension is a major risk factor for 
+                cardiovascular conditions.
             </p>
-            <p>
-            Prevalence increased with American Heart Association's categories, in a linear manner between categories
-            "Normal", "Elevated" and "Hypertension Stage 1". There was an increase of approximately
-            <b>11%</b> between these groups. However, prevalence <b>almost doubled</b> between categories
-            "Hypertension Stage I (<b>{cardio_aha[cardio_aha['ap_aha'] == "3"]['cardio_1'].values[0]:.1f}%</b>)
-            and "Hypertension Stage II" (<b>{cardio_aha[cardio_aha['ap_aha'] == "4"]['cardio_1'].values[0]:.1f}%</b>).
+            <p class="analysis-p">
+                The disease prevalence escalated linearly across the American Heart 
+                Association's categories from "Normal" through "Elevated" to 
+                "Hypertension Stage 1", marking an 11% increase between
+                these stages. Remarkably, prevalence almost doubled transitioning 
+                from "Hypertension Stage I" ({cardio_aha[cardio_aha['ap_aha'] == "3"]['cardio_1'].values[0]:.1f}%)
+                to "Hypertension Stage II" ({cardio_aha[cardio_aha['ap_aha'] == "4"]['cardio_1'].values[0]:.1f}%).
             </p>
-            <p>
-            Overall, <b>males subjects displayed higher levels</b> for mean blood pressure, 
-            regardless of age or CV status. This difference tended to disminish with increasing age in controls, while it
-            remained consistent in patients. Additionnaly, the mean blood pressure value was not affected by age in patients,
-            whereas it increased with age in controls.
+            <p class="analysis-p">
+                Overall, male subjects demonstrated higher mean blood pressure levels than female, independent
+                of age or cardiovascular disease status. This disparity in blood pressure appeared to
+                lessen with age among control subjects but persisted among patients.
+                Moreover, while age did not significantly influence mean blood pressure in 
+                patients, it was associated with an increase in controls.
             </p>""",
-        "conclusion" : f"""<ul class = "viz-cl">
-            <li>Only {df['ap_aha'].value_counts(normalize=True)['1']:.1%} of subjects had blood pressure classified as "Normal"</li>
-            <li>Males displayed higher blood pressure values than females, regardless of cardiovascular status</li>
-            <li>Blood pressure increased with age among controls, but remained almost constant in patients</li>
-            <li>Prevalence of CV disease increased with AHA's categories, up to {cardio_aha[cardio_aha['ap_aha'] == "4"]['cardio_1'].values[0]:.1f}% among subjects
-            in the "Hypertension Stage II" group</li>
+        "conclusion" : f"""
+            <ul class="viz-cl">
+            <li>Only {df['ap_aha'].value_counts(normalize=True)['1']:.1%} of participants were categorized within the 'Normal' blood pressure range, highlighting the prevalence of elevated levels within the cohort.</li>
+            <li>Irrespective of cardiovascular disease status, male participants consistently showed higher blood pressure readings compared to females.</li>
+            <li>While blood pressure readings tend to rise with age in control subjects, they remained relatively stable among patients with cardiovascular conditions.</li>
+            <li>The incidence of cardiovascular diseases increases in alignment with the American Heart Association’s (AHA) categorizations, peaking at {cardio_aha[cardio_aha['ap_aha'] == "4"]['cardio_1'].values[0]:.1f}% within individuals classified under 'Hypertension Stage II'.</li>
         </ul>"""
     },
     "gluc-chol" : {
@@ -334,38 +338,44 @@ viz_data = {
             </tr>
         </table><br>""",
     "img" : "gluc_chol_fig.png",
-    "analysis" : f"""<p>
-                A large majority of subjects in the cohort had normal values for either glucose 
-                (<b>{df["gluc"].value_counts(normalize = True)["1"]:.1%}</b>) or cholesterol
-                (<b>{df["cholesterol"].value_counts(normalize = True)["1"]:.1%}</b>). Proportions of subjects
-                labeled as "Above normal" and "Well above normal" were comparable in both variables.
-            </p>
-            <p>
-                The prevalence of cardiovascular disease <b>increased</b> with the levels of both glucose and cholesterol. Prevalence 
-                was of <b>{df[df["gluc"] == "1"]['cardio'].value_counts(normalize = True)["1"]:.1%}</b> among subjects with normal glucose,
-                and of <b>{df[df["cholesterol"] == "1"]['cardio'].value_counts(normalize = True)["1"]:.1%}</b> among subjects with
-                normal cholesterol. Prevalence <b>linearly</b> correlated with increasing levels of cholesterol, up to 
-                <b>{df[df["cholesterol"] == "3"]['cardio'].value_counts(normalize = True)["1"]:.1%}</b> among subjects with cholesterol
-                labeled as "Well above normal". Prevalence also increased with glucose levels, but remained constant between subjects
-                with glucose labeled as "Above normal" and "Well above normal" (around 
-                <b>{np.mean([df[df["gluc"] == "2"]['cardio'].value_counts(normalize = True)["1"], 
-                df[df["gluc"] == "3"]['cardio'].value_counts(normalize = True)["1"]]):.0%}</b>).        
-            </p>
-            <p>
-                Analysing both glucose and cholesterol levels together revealed that large majority of subjects had normal levels
-                of both parameters (<b>{tab_gc.loc["1", "1"]:.1%}</b>). Interestingly, prevalence of CV disease remained relatively constant
-                with increasing glucose levels, for a fixed cholesterol level. This suggest that while both parameters correlated 
-                with cardiovascular disease status ({pval_chi2_gluc} for glucose and {pval_chi2_chol} for cholesterol),
-                the feature <b>gluc</b> may bring limited information due to the influence of <b>cholesterol</b>.
-            </p>""",
-        "conclusion" : f"""<ul class = "viz-cl">
-                <li>Majority of subjects had normal values for both glucose and cholesterol ({tab_gc.loc["1", "1"]:.1%})</li>
-                <li>Prevalence of cardiovascular diseases increased with glucose and cholesterol</li>
-                <li>Modalities "Above normal" and "Well above normal" could be merged for gluc</li>
-                <li>Dropping gluc may be considered as it may bring a limited amount of information compared to 
-                cholesterol</li>
-                <li>Cut-off values for both gluc and cholesterol modalities are not known, there could
-                be some bias, they therefore need to be interpreted with caution</li>
+    "analysis" : f"""
+        <p class="analysis-p">
+            The vast majority of the cohort maintained normal levels for glucose 
+            ({df["gluc"].value_counts(normalize=True)["1"]:.1%}) and cholesterol 
+            ({df["cholesterol"].value_counts(normalize=True)["1"]:.1%}), with similar 
+            proportions across both markers for those categorized as
+            "Above normal" and "Well above normal."
+        </p>
+        <p class="analysis-p">
+            Notably, the prevalence of cardiovascular disease escalates with elevated 
+            glucose and cholesterol levels. Among individuals with normal 
+            glucose levels, the prevalence was
+            {df[df["gluc"] == "1"]['cardio'].value_counts(normalize=True)["1"]:.1%}, 
+            and {df[df["cholesterol"] == "1"]['cardio'].value_counts(normalize=True)["1"]:.1%}
+            for those with normal cholesterol levels. The disease prevalence increases linearly
+            with cholesterol, reaching up to
+            {df[df["cholesterol"] == "3"]['cardio'].value_counts(normalize=True)["1"]:.1%}
+            in individuals with "Well above normal" cholesterol levels. Conversely, 
+            glucose's impact is less differentiated, maintaining a near-constantprevalence
+            between the "Above normal" and "Well above normal" categories 
+            (approximately {np.mean([df[df["gluc"] == "2"]['cardio'].value_counts(normalize=True)["1"], df[df["gluc"] == "3"]['cardio'].value_counts(normalize=True)["1"]]):.0%}).
+        </p>
+        <p class="analysis-p">
+            Concurrent analysis of glucose and cholesterol levels shows that a 
+            significant fraction had normal readings for both ({tab_gc.loc["1", "1"]:.1%}).
+            Intriguingly, cardiovascular disease prevalence does not markedly 
+            vary with glucose levels when cholesterol remains constant, 
+            suggesting that while both factors are associated with cardiovascular 
+            health ({pval_chi2_gluc} for glucose and {pval_chi2_chol} for cholesterol),
+            glucose may offer limited additional predictive value over cholesterol.
+        </p>""",
+        "conclusion" : f"""
+            <ul class="viz-cl">
+                <li>The majority of participants displayed normal levels for both glucose and cholesterol, with a significant proportion ({tab_gc.loc["1", "1"]:.1%}) falling within this healthy range.</li>
+                <li>The likelihood of cardiovascular diseases escalates with higher levels of glucose and cholesterol, underscoring the importance of monitoring these biomarkers.</li>
+                <li>Considering the minimal differentiation in cardiovascular disease prevalence between "Above normal" and "Well above normal" glucose levels, merging these categories for glucose analysis could streamline the dataset.</li>
+                <li>The potential redundancy of glucose as a predictive factor warrants discussion, with the suggestion to potentially exclude it from analyses in favor of focusing on cholesterol, which appears to offer more substantial insights.</li>
+                <li>Given the absence of clear cut-off values for defining glucose and cholesterol levels, caution is advised when interpreting these parameters due to the potential for bias in their categorization.</li>
             </ul>"""
     },
     "lifestyle" : {
@@ -413,34 +423,44 @@ viz_data = {
         </table><br>""",
         "img" : "lifestyle_fig.png",
         "analysis": f"""
-            <p>
-                A minority of subjects reported smoking (<b>{df['smoke'].value_counts(normalize = True)["1"]:.1%}</b>) or alcohol consumption
-                (<b>{df['alco'].value_counts(normalize = True)["1"]:.1%}</b>), whereas they were <b>{df['active'].value_counts(normalize = True)["1"]:.1%}</b>
-                to report some physical activity. This cohort therefore displayed overall healthy lifestyle, as 
-                <b>{df['healthy_ls'].value_counts(normalize = True)["1"]:.1%}</b> of subject were non-smoker, did not drink alcohol, and had some 
-                physical activity. On the other hand, there were only <b>{df['lifestyle'].value_counts(normalize = True)["7"]:.1%}</b>
-                to report smoking, drinking alcohol and not exercising. Nevertheless, it should be kept in mind that the definition of 
-                alcohol consumption and physical activity are not specified, and could therefore be biased.
+            <p class="analysis-p">
+                A small percentage of participants engaged in smoking 
+                ({df['smoke'].value_counts(normalize=True)["1"]:.1%}) or alcohol consumption
+                ({df['alco'].value_counts(normalize=True)["1"]:.1%}), while a significant 
+                majority ({df['active'].value_counts(normalize=True)["1"]:.1%}) reported 
+                participating in some form of physical activity. Consequently, a
+                substantial portion of the cohort 
+                ({df['healthy_ls'].value_counts(normalize=True)["1"]:.1%}) exhibited an 
+                overall healthy lifestyle, characterized by abstaining from smoking, 
+                moderate to no alcohol intake, and engaging in physical activity. 
+                In contrast, a very small fraction 
+                ({df['lifestyle'].value_counts(normalize=True)["7"]:.1%}) reported smoking, 
+                drinking alcohol, and a lack of physical activity. It is important to note, 
+                however, that the specific criteria for alcohol consumption and physical 
+                activity levels are undefined, which could introduce bias into these 
+                observations.
             </p>
-            <p>
-                Surprisingly, <b>no obvious effect</b> of either either smoking or activity on blood pressure was found: median values were
-                identical for systolic, diastolic and mean blood pressure, and distributions were comparable.        
+            <p class="analysis-p">
+                Intriguingly, the analysis revealed no significant impact of smoking or 
+                physical activity on blood pressure levels, with median systolic, 
+                diastolic, and mean blood pressure values showing no difference, 
+                and their distributions remaining similar across groups.        
             </p>
-            <p>
-                Finally, male subjects were <b>more likely</b> to smoke and drink alcohol than females: 
-                <b>{df_sex_ls[(df_sex_ls['sex'] == 'male') & (df_sex_ls['parameter'] == "smoke_1")]['percentage'].values[0]:.1f}%</b> of males were
-                smokers and <b>{df_sex_ls[(df_sex_ls['sex'] == 'male') & (df_sex_ls['parameter'] == "alco_1")]['percentage'].values[0]:.1f}%</b> drank
-                alcohol, compared to <b>{df_sex_ls[(df_sex_ls['sex'] == 'female') & (df_sex_ls['parameter'] == "smoke_1")]['percentage'].values[0]:.1f}%</b>
-                and <b>{df_sex_ls[(df_sex_ls['sex'] == 'female') & (df_sex_ls['parameter'] == "alco_1")]['percentage'].values[0]:.1f}%</b> respectively for females.
+            <p class="analysis-p">
+                Sexe-related differences emerged in lifestyle habits, with male 
+                participants more prone to smoking and alcohol consumption than  
+                female: {df_sex_ls[(df_sex_ls['sex'] == 'male') & (df_sex_ls['parameter'] == "smoke_1")]['percentage'].values[0]:.1f}% 
+                of males smoked, and {df_sex_ls[(df_sex_ls['sex'] == 'male') & (df_sex_ls['parameter'] == "alco_1")]['percentage'].values[0]:.1f}% 
+                consumed alcohol, compared to {df_sex_ls[(df_sex_ls['sex'] == 'female') & (df_sex_ls['parameter'] == "smoke_1")]['percentage'].values[0]:.1f}% 
+                and {df_sex_ls[(df_sex_ls['sex'] == 'female') & (df_sex_ls['parameter'] == "alco_1")]['percentage'].values[0]:.1f}% respectively for females.
             </p>""",
-        "conclusion" : f"""<ul class = "viz-cl">
-                <li>A small number of subjects reported smoking and or drinking alcohol, and these variables did not 
-                display any obvious correlation with cardio</li>
-                <li>Smoking or exercising did not influence blood pressure levels</li>
-                <li>A tendency of higher CV disease prevalence could exist among subjects that do not exercise</li>
-                <li>Males were more likely to smoke and drink alcohol, while a comparable proportion of males and females
-                reported physical activity</li>
-                <li>smoke should not be included in the model due to plausible bias</li>
+        "conclusion" : f"""
+            <ul class="viz-cl">
+                <li>A minority of the study's participants reported engaging in smoking or alcohol consumption, neither of which showed a clear correlation with cardiovascular disease incidence.</li>
+                <li>Neither smoking habits nor physical activity levels appeared to significantly impact blood pressure readings.</li>
+                <li>There may be a potential trend towards a higher prevalence of CV diseases among individuals who do not participate in regular physical activity.</li>
+                <li>Male participants were more inclined towards smoking and alcohol consumption compared to females, yet both genders reported similar rates of physical activity engagement.</li>
+                <li>Due to potential biases, incorporating the smoking variable into the predictive model may not be advisable.</li>
             </ul>"""
     }
 }

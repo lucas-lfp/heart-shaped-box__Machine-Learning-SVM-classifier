@@ -1,12 +1,75 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div>
-    <p>
-        <b>Heart Shaped Box Project - Cardiovascular Disease in Adult Population</b>
+<div id = "intro-div">
+    <p id = "intro-1">
+        Cardiovascular disease stands as the foremost cause of death globally, 
+        accounting for approximately a third of all fatalities 
+        <sup>1</sup>.
     </p>
-    <p>
-        <i>Data Science with Real-Life Clinical Data</i>
+    <p class="intro-p">
+        The spectrum of cardiovascular diseases encompasses conditions like Ischemic Heart Disease, 
+        Stroke, and Heart Failure, among others. Notably, Ischemic Heart Disease, 
+        Stroke, and Hypertensive Heart Disease are the most burdensome <sup>2</sup>.
     </p>
+    <p class = "intro-p">
+        Risk factors for cardiovascular diseases are varied and include high 
+        cholesterol, hypertension, tobacco use, and diabetes, among others. 
+        It's important to note that not all cardiovascular diseases share the 
+        same risk factors. Moreover, numerous individual factors also play a role, 
+        including gender, stress, genetics, family history, environment, 
+        concurrent diseases, and medication use <sup>3</sup>.
+    </p>
+    <p class = "intro-p">
+        Given the uniqueness of each individual, Data Science proves invaluable. 
+        This project aimed to develop a machine learning model to assess an 
+        individual's risk of cardiovascular disease based on specific information: 
+        age, weight, height, blood pressure, cholesterol, and glucose levels. 
+        Medical practice often employs simple algorithms and scores for diagnosis 
+        or prognosis, but machine learning offers a robust approach to consider 
+        a broad set of individual characteristics and their interrelations.
+    </p>
+    <p class = "intro-p">
+        This model employs a Support Vector Machine (SVM) and was trained on data 
+        from 65,000 individuals, both with and without cardiovascular disease, 
+        achieving an accuracy of 74%. 
+    </p>
+    <p class = "intro-p">
+        However, it is essential to note that this model is part of a training 
+        project and has not been formally validated by scientific authorities. 
+        Consequently, the results should be interpreted with caution. 
+        The main limitations of this algorithm include:
+    </p>
+    <ul class = "intro-p">
+        <li>The model relies on publicly available data, the quality of which could not be independently verified.</li>
+        <li>The ethnicity and geographic origin of the individuals in the dataset are unknown, even though these factors can significantly affect the prevalence of cardiovascular diseases.</li>
+        <li>The training data encompasses a limited age range (39 to 65 years). While the prevalence of cardiovascular disease increases with age, accuracy may diminish for individuals outside this range due to data extrapolation.</li>
+        <li>Only a limited set of characteristics were available in the training data. Notably, factors such as smoking status and gender did not influence the model, limiting the variables available for input.</li>
+        <li>Several features lacked detailed definitions, including smoking, alcohol consumption, and physical activity levels. Additionally, the thresholds for glucose and cholesterol levels were unspecified.</li>
+    </ul>
+    <p class = "intro-p">
+        Despite these limitations, with just a few required inputs, this model can 
+        serve as a valuable tool, offering insights into one's cardiac health and 
+        encouraging users to seek further evaluation from healthcare professionals.
+    </p>
+</div>
+<div id = "nav-btn-div">
+    <a href = "/ml" class = "nav-btn">Test the model</a>
+    <a href = "/viz-home" class = "nav-btn">Explore the data</a>
+</div>
+<div >
+    <p id = "ref-p">
+        References:
+    </p>
+    <p id = "biblio-p">
+    1: <a href = "https://pubmed.ncbi.nlm.nih.gov/27733281/">Global, regional, and national life expectancy, all-cause mortality, and cause-specific mortality for 249 causes of death, 1980-2015: a systematic analysis for the Global Burden of Disease Study 2015</a>, GBD 2015 Mortality and Causes of Death Collaborators, Lancet 2015.
+    <br><br>
+    2: <a href = "https://pubmed.ncbi.nlm.nih.gov/28860318/">Reducing the Global Burden of Cardiovascular Disease, Part 1: The Epidemiology and Risk Factors</a>, Philip Joseph et al., Circ Res. 2017.
+    <br><br>
+    3: <a href = "https://pubmed.ncbi.nlm.nih.gov/34458905/">2021 ESC Guidelines on cardiovascular disease prevention in clinical practice</a>, Frank L J Visseren et al., Eur. Heart J. 2021.
+    </p>    
+</div>
+<div id="home-btt-div">
+    <a href="#top-anchor" class="back-to-top">Back to Top</a>
 </div>
 {% endblock %}
