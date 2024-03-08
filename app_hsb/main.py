@@ -7,7 +7,6 @@ from utils import load_data, load_raw_data
 import joblib
 import pandas as pd
 
-
 app = Flask(__name__, template_folder='templates')
 app.config['SECRET_KEY'] = "22475"
 
@@ -44,7 +43,6 @@ def visualization(viz_id):
         abort(404) 
 
     data = viz_data[viz_id].copy()
-    
     data['img'] = url_for('static', filename=data['img'])
 
     return render_template("viz_base.html", **data)
@@ -91,10 +89,8 @@ def ml():
             "ap_m": [user_apm]
         }
 
-        # Create a DataFrame
         df_subject = pd.DataFrame(test_data)
         df_s1 = df_subject.copy()
-        # Preprocess data: label encoding, min-max scaling
         df_subject['cholesterol'] = le.transform(df_subject['cholesterol'])
         df_subject['gluc'] = le.transform(df_subject['gluc'])
         
