@@ -7,7 +7,7 @@ from utils import load_data, load_raw_data
 import joblib
 import pandas as pd
 
-app = Flask(__name__, template_folder='templates')
+ app = Flask(__name__, template_folder='templates')
 app.config['SECRET_KEY'] = "22475"
 
 class InputForm(FlaskForm):
