@@ -7,7 +7,10 @@ from utils import load_data, load_raw_data
 import joblib
 import pandas as pd
 
- app = Flask(__name__, template_folder='templates')
+import numpy
+print(numpy.__version__)
+
+app = Flask(__name__, template_folder='templates')
 app.config['SECRET_KEY'] = "22475"
 
 class InputForm(FlaskForm):
@@ -27,7 +30,6 @@ le = joblib.load('hsb_le.pkl')
 
 df = load_data()
 df_raw = load_raw_data()
-
 
 @app.route('/')
 def home():
@@ -74,7 +76,7 @@ def ml():
         user_cholesterol = int(user_input.cholesterol_input.data)
         user_gluc = int(user_input.gluc_input.data)
 
-        user_height_in_meters = user_height / 100  # Convert height from cm to meters
+        user_height_in_meters = user_height / 100   # Convert height (cm to meters)
         user_bmi = round(user_weight / (user_height_in_meters ** 2), 1)
 
         user_apm = round((user_aphi + 2 * user_aplo) / 3, 1)
