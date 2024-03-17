@@ -76,7 +76,7 @@ def ml():
         user_cholesterol = int(user_input.cholesterol_input.data)
         user_gluc = int(user_input.gluc_input.data)
 
-        user_height_in_meters = user_height / 100   # Convert height (cm to meters)
+        user_height_in_meters = user_height / 100     # Convert height (cm to meters)
         user_bmi = round(user_weight / (user_height_in_meters ** 2), 1)
 
         user_apm = round((user_aphi + 2 * user_aplo) / 3, 1)
@@ -127,8 +127,6 @@ def ml():
                         """
             
     return render_template("ml.html", user_form = user_input, test_result=test_output, warning_age=warning_age, warning_height=warning_height, warning_bp=warning_bp)
-
-
 
 @app.route('/about')
 def about():
