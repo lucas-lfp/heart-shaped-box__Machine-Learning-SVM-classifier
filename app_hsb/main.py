@@ -49,6 +49,7 @@ def visualization(viz_id):
 
     return render_template("viz_base.html", **data)
 
+
 @app.route('/ml', methods = ['GET', 'POST'])
 def ml():
     warning_age = ""

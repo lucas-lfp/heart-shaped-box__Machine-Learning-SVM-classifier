@@ -42,11 +42,9 @@ def pval_txt(pval):
     else:
         return f"<i>p</i> = {pval:.4f}"
 
-
 def mean_sd_range(df, var):
     return (f"{np.mean(df[var.name]):.1f} ± {np.std(df[var.name]):.1f}", f"[{np.min(df[var.name]):.1f} - {np.max(df[var.name]):.1f}]")
 
-    
 def chi2_cardio(df, var):
     """
     Calculates the chi-squared statistic and p-value for a categorical variable in relation to 'cardio'.
